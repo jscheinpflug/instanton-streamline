@@ -393,10 +393,12 @@ of the induced zero-mode measure explicit directly in Polyakov-path-integral
 terms (including a coordinate Jacobian to evaluation variables and the
 Chern--Weil representative of $c_{\mathrm{top}}(\mathrm{Obs}_k)$). In
 Appendix~\ref{app:uv-measure} we set NSR conventions following
-\cite{Yin:FoundationsStringTheory} and begin an explicit UV-regularized derivation
-of the functional measure (fixing conventions and isolating the moduli
-dependence in a fully explicit $k=1$ computation, while keeping track of a
-possible moduli-independent UV normalization constant).
+\cite{Yin:FoundationsStringTheory} and define the relevant UV-regulated Polyakov
+path integral in a way that makes the normalization issue completely explicit.
+Combined with Appendix~\ref{app:pedestrian-obstruction} and
+Appendix~\ref{app:zero-mode-measure}, this shows how the UV definition reduces
+to the same projective-space intersection number and how the overall
+normalization is fixed by matching the constant-map sector.
 
 \appendix
 \section{A pedestrian derivation of the obstruction bundle}
@@ -625,9 +627,9 @@ functional measure starting from a UV-regularized Hamiltonian path integral and
 performing the change of variables to collective coordinates, but doing this
 directly is a lengthy exercise (as emphasized in Xi Yin's notes
 \cite[Sec.~19.5.4, around Eq.~(19.194)]{Yin:FoundationsStringTheory}).
-Appendix~\ref{app:uv-measure} begins this UV-regularized derivation (fixing
-conventions and isolating the moduli dependence in an explicit $k=1$
-computation). In the present appendix we focus instead on the
+Appendix~\ref{app:uv-measure} fixes the UV definition and explains how the
+overall normalization is fixed by comparing to the constant-map sector. In the
+present appendix we focus instead on the
 \emph{moduli dependence} of the induced zero-mode measure, which is controlled
 by the $L^2$ inner products on bosonic and fermionic zero modes coming from the
 quadratic kinetic terms and by the Chern--Weil form induced by the universal
@@ -974,196 +976,109 @@ remaining integration becomes a product of standard Fubini--Study measures on
 $C\simeq\CP^1$, and the final answer reduces to the intersection number computed
 in the main text.
 
-\section{A UV-regularized derivation of the instanton zero-mode measure}
+\section{A UV-defined Polyakov path integral and normalization of the instanton expansion}
 \label{app:uv-measure}
 
-Appendix~\ref{app:zero-mode-measure} made the \emph{moduli dependence} of the
-instanton zero-mode measure explicit, while leaving its UV normalization
-constant implicit. Here we begin the missing step: we define the functional measure by a
-UV-regularized Polyakov/NSR path integral and show, in a concrete genus-zero
-example, how the induced measure reduces to the projective-space intersection
-computation of the main text. We follow Xi Yin's conventions, in particular the
-normalization $q=e^{2\pi i t}$ \cite{Yin:FoundationsStringTheory}.
+Appendix~\ref{app:zero-mode-measure} determined the \emph{moduli dependence} of
+instanton zero-mode measures, while leaving implicit the overall UV
+normalization of the gauge-fixed functional integral. The purpose of this
+appendix is to make the missing step explicit in Polyakov/NSR terms: we state a
+UV definition of the functional measure (using a Hamiltonian/time-slice
+definition as in \cite[App.~B]{Yin:FoundationsStringTheory}) and then explain
+how the overall normalization is fixed by the constant-map sector. Once this
+normalization is chosen, the instanton sum becomes a relative prediction whose
+moduli dependence is entirely controlled by Appendices~\ref{app:pedestrian-obstruction}
+and \ref{app:zero-mode-measure}. Throughout we follow Xi Yin's conventions,
+including
+\begin{equation}
+  q=e^{2\pi i t}.
+  \label{eq:uv-q-def}
+\end{equation}
 
-\subsection{NSR conventions and picture choice}
-We consider type II string theory on $\bR^{1,3}\times X$ with $X$ a Calabi--Yau
-threefold and use the NSR formalism. On the sphere we fix three insertion
-points and use unintegrated vertices with explicit $c\wt c$ factors. We
-bosonize the $\beta\gamma$ superghost system in terms of $\phi,\eta,\xi$ so that
-unintegrated NS and R vertices carry holomorphic picture numbers $-1$ and
-$-\tfrac12$ respectively, and similarly for the anti-holomorphic sector.
-
-For the three-point amplitude relevant to the vector-multiplet Yukawa coupling
-one convenient choice is to take two (R,R) vertices in picture
-$(-\tfrac12,-\tfrac12)$ and one (NS,NS) vertex in picture $(-1,-1)$, which
-saturates the required total picture number $(-2,-2)$ on the sphere without
-inserting any picture-changing operator (PCO). If one instead wishes to
-picture-raise an (NS,NS) vertex from $(-1,-1)$ to $(0,0)$, our PCO convention is
-that bringing a holomorphic and anti-holomorphic PCO to the vertex produces the
-standard ``picture-raised'' operator \cite[Eq.~(8.2)]{Yin:FoundationsStringTheory}.
-
-\subsection{From the physical three-point amplitude to an internal correlator}
-In Xi Yin's conifold example, the scalar modulus $t$ is represented by the
-massless (NS,NS) vertex operator
+\subsection{The internal correlator defining \texorpdfstring{$C_{111}(t)$}{C111(t)}}
+We consider type II string theory on $\bR^{1,3}\times X$ with $X$ a
+Calabi--Yau threefold and work in the NSR formalism. In Xi Yin's
+resolved-conifold example, the scalar modulus $t$ is represented by the
+massless (NS,NS) vertex operator \cite[Eq.~(19.175)]{Yin:FoundationsStringTheory}
 \begin{equation}
   {\cal V}_\phi(k)=c\wt c\,e^{-\phi-\wt\phi}\,{\cal O}_1\,e^{ik\cdot X},
-\label{eq:uv-vphi}
+  \label{eq:uv-vphi}
 \end{equation}
-where ${\cal O}_1$ is an internal weight $(\tfrac12,\tfrac12)$ operator with the
-semi-classical expression \cite[Eq.~(19.176)]{Yin:FoundationsStringTheory}
+where $X^\mu$ are the free bosons of the $\bR^{1,3}$ sector and the internal
+operator admits the semi-classical expression \cite[Eq.~(19.176)]{Yin:FoundationsStringTheory}
 \begin{equation}
   {\cal O}_1 = -i\,(e_1)_{i\bar j}(Z,\bar Z)\,\psi^i\,\wt\psi^{\bar j}.
-\label{eq:uv-o1}
+  \label{eq:uv-o1}
 \end{equation}
-The self-dual gauge boson in the same vector multiplet is represented by a
-massless (R,R) vertex (in picture $(-\tfrac12,-\tfrac12)$) whose internal part
-is the corresponding (R,R) ground operator (we will not need its detailed
-structure). The sphere amplitude with two gauge bosons and one modulus takes
-the form \cite[Sec.~19.5.4]{Yin:FoundationsStringTheory}
+
+The protected spacetime three-point amplitude with two gauge bosons and one
+modulus takes the form \cite[Eq.~(19.178)]{Yin:FoundationsStringTheory}
 \begin{equation}
   \langle {\cal V}_A{\cal V}_A{\cal V}_\phi\rangle
   = f_{1\A\B}f_2{}^{\A\B}\,C_{111}(t),
-\label{eq:uv-vaa-vphi}
+  \label{eq:uv-vaa-vphi}
 \end{equation}
-so that $C_{111}(t)$ is fixed by an internal $(2,2)$ NLSM three-point function.
-A convenient representation is \cite[Eq.~(19.180)]{Yin:FoundationsStringTheory}
+so $C_{111}(t)$ is fixed by an internal $(2,2)$ NLSM three-point function. A
+convenient representation is \cite[Eq.~(19.180)]{Yin:FoundationsStringTheory}
 \begin{equation}
   \left\langle {\cal O}_1(z_1,\bar z_1)\,{\cal O}_1(z_2,\bar z_2)\,{\cal O}_1^{(-1,1)}(z_3,\bar z_3)\right\rangle
   = \frac{C_{111}(t)}{|z_{13}|^2|z_{23}|^2}.
   \label{eq:yin-ccc-nsns}
 \end{equation}
-The worldsheet-instanton computation is therefore a computation of the NLSM
-path integral with these operator insertions.
 
-\paragraph{Mirror symmetry prediction.}
-Mirror symmetry determines the exact genus-zero prepotential $F_0(t)$ (up to an
-additive polynomial of degree $\le 2$) from period integrals on the mirror
-Calabi--Yau \cite{Candelas:1990rm}. In the large-volume coordinate $t$
-normalized so that $q=e^{2\pi i t}$, the instanton expansion has the form
-\cite{Candelas:1990rm,AspinwallMorrison:1991tft}
+We will also need the semi-classical expression for ${\cal O}_1^{(-1,1)}$ in the
+large-volume regime \cite[Eq.~(19.181)]{Yin:FoundationsStringTheory}:
 \begin{equation}
-  F_0(t)=\frac{\kappa}{6}t^3+\frac{1}{(2\pi i)^3}\sum_{d\ge1} n_d\,\operatorname{Li}_3(q^d)
-  +(\text{at most quadratic in }t),
-  \label{eq:mirror-prediction-prepotential}
+  {\cal O}_1^{(-1,1)}
+  =
+  -\frac{i}{4}\,(e_1)^{\bar i j}\,
+  \overline{\Omega}_{\bar i\bar m\bar n}\,\Omega_{jpq}\,
+  \psi^{\bar m}\psi^{\bar n}\,\wt\psi^{p}\wt\psi^{q},
+  \label{eq:uv-o1-minusplus}
 \end{equation}
-so the Yukawa coupling is predicted to be
-\begin{equation}
-  C_{ttt}(t)=\partial_t^3 F_0(t)
-  =\kappa+\sum_{d\ge1} n_d\,\frac{d^3 q^d}{1-q^d}.
-  \label{eq:mirror-prediction-yukawa}
-\end{equation}
-In this one-parameter situation, $C_{ttt}(t)$ is the same protected Yukawa
-coupling denoted $C_{111}(t)$ above (with the modulus coordinate $t$ normalized
-by \eqref{eq:uv-vphi}--\eqref{eq:yin-ccc-nsns}).
-For a single rigid $(-1,-1)$ rational curve with $\int_C e_1=1$ and a single
-primitive contribution $n_1=1$, this gives the unambiguous target
-$C_{ttt}^{\mathrm{inst}}(t)=\sum_{k\ge1} q^k=q/(1-q)$, so the coefficient of $q$
-is predicted to be $1$. A UV Polyakov/NSR computation with the conventions fixed
-by \eqref{eq:uv-vphi}--\eqref{eq:yin-ccc-nsns} should reproduce this
-normalization; below we compute the moduli dependence and isolate any remaining
-moduli-independent UV constant.
+where $\Omega$ is the holomorphic three-form on $X$, normalized so that
+$|\Omega|^2\equiv \frac{1}{6}\Omega_{ijk}\overline{\Omega}^{ijk}=1$.
 
-\subsection{UV definition of the measure and separation into zero modes}
-We now expand the NLSM path integral around a holomorphic saddle $Z_0$ in a fixed
-degree-$k$ sector. For a rigid $\CP^1\subset X$ with normal bundle
-$\mathcal{O}(-1)\oplus\mathcal{O}(-1)$, the relevant holomorphic maps factor
-through this $\CP^1$. We use the rational-map parametrization and the resultant
-$R(P,Q)$ reviewed in Appendix~\ref{app:zero-mode-measure}; the key change of
-variables from coefficient coordinates to evaluation coordinates is encoded in
-the explicit Jacobians \eqref{eq:jacobian-k1} and \eqref{eq:jacobian-general}.
-
-To define the functional measure unambiguously, we choose a UV regulator by
-expanding the fluctuations in an orthonormal basis of eigenmodes of the kinetic
-operators. Concretely, on the sphere with a fixed reference metric, expand
+\subsection{UV definition of the functional measure}
+We now state a UV definition of the NLSM functional measure suitable for a
+semiclassical expansion around a holomorphic saddle. One convenient definition
+is to expand fluctuations in an orthonormal basis of eigenmodes of the
+quadratic kinetic operators and then truncate to finitely many modes. On the
+sphere with a fixed reference worldsheet metric, expand
 \begin{equation}
   \delta Z^i = \sum_{n} y^n\,\varphi_n^i,
   \qquad
   \delta\psi^i = \sum_{n} \chi^n\,\rho_n^i,
-\label{eq:uv-mode-expansion}
+  \label{eq:uv-mode-expansion}
 \end{equation}
 where $\{\varphi_n\}$ and $\{\rho_n\}$ are orthonormal with respect to the $L^2$
-inner products induced by the quadratic action, and regulate the path integral
-by keeping only modes with eigenvalue $\le \Lambda^2$ (bosons) and $\le \Lambda$
-(fermions). The UV-regularized functional measure is then the product Lebesgue
-measure over the regulated mode coefficients,
+inner products induced by the quadratic action. The UV-regulated functional
+measure is taken to be the flat product measure over the regulated mode
+coefficients,
 \begin{equation}
   [D\delta Z]_\Lambda[D\delta\psi]_\Lambda
   :=
   \mathcal{N}_\Lambda\,
-  \prod_{n\le \Lambda^2} d^2 y^n \prod_{n\le \Lambda} d\chi^n,
-\label{eq:uv-measure-def}
+  \prod_{n\le \Lambda^2} d^2 y^n \prod_{n\le \Lambda} d\chi^n.
+  \label{eq:uv-measure-def}
 \end{equation}
-where $\mathcal{N}_\Lambda$ collects UV-dependent constants in the chosen
-regularization (in particular, powers of the universal factor
-$(4\pi^2 i\A'\Delta\tau)^{-3}$ from integrating out bosonic momenta as in
-\eqref{eq:nlsm-integrate-out-momenta}, together with the corresponding
-$\Delta\tau$-independent constants from the time-discretized Grassmann path
-integral \cite[Eq.~(B.31)]{Yin:FoundationsStringTheory}). Since
-$\mathcal{N}_\Lambda$ is field-independent, it is an overall normalization of
-the UV-regulated gauge-fixed functional integral and may be absorbed into the
-normalization of correlators and/or vertex operators. (On the sphere, one does
-not normalize by a separate vacuum partition function, due to the conformal
-Killing symmetry and the associated ghost zero modes fixed by unintegrated
-insertions.)%
-In what follows we therefore focus on the moduli dependence, while keeping
-implicit a possible moduli-independent overall constant that is fixed once the
-modulus coordinate $t$ and vertex normalization are chosen (here we follow
-\cite{Yin:FoundationsStringTheory} and compare to the mirror-symmetry prediction
-above); similarly for the right-movers.
-Separating the integration variables into
-zero modes and nonzero modes means splitting these orthonormal bases into
-zero-eigenvalue and nonzero-eigenvalue subspaces. This makes the change of
-variables to collective coordinates (instanton moduli) and Grassmann collective
-coordinates (fermion zero modes) entirely canonical.
+The field-independent factor $\mathcal{N}_\Lambda$ collects UV-dependent
+constants in the chosen regularization (including short-time normalization
+factors in a Hamiltonian definition). Since $\mathcal{N}_\Lambda$ is field
+independent, it is a single overall normalization of the UV-regulated
+(gauge-fixed) functional integral at genus zero; it may be absorbed into the
+normalization of correlators and/or vertex operators. In particular, the
+normalization of $C_{111}(t)$ is fixed once we match the $k=0$ sector to the
+classical geometry in Sec.~\ref{app:uv-k0} below.
 
-After splitting into zero and nonzero modes, the instanton contribution takes
-the expected form: an integral over bosonic moduli and fermion zero modes,
-times a regulated determinant from the nonzero modes. The action expanded about
-the saddle contains the classical term $-2\pi i k t$ and the universal curvature
-four-fermi interaction discussed in the main text and Appendix~\ref{app:zero-mode-measure}
-(see also \cite[Eq.~(19.194)]{Yin:FoundationsStringTheory} for an explicit
-normalization).
-
-\subsection{The $k=1$ measure and moduli dependence (fully explicit)}
-We now carry out the $k=1$ computation explicitly, following the logic of the
-UV-regularized measure described above.
-
-Write $\nu(z)=P(z)/Q(z)$ with $P(z)=a_0+a_1 z$, $Q(z)=b_0+b_1 z$, and work on the
-patch $b_0\neq 0$ with the gauge choice $b_0$ fixed. Fix three distinct marked
-points $z_a$ on the worldsheet. The induced bosonic collective coordinates can
-be taken to be the evaluation variables
-\begin{equation}
-  \nu_a:=\nu(z_a)\qquad (a=1,2,3).
-\label{eq:uv-k1-eval-vars}
-\end{equation}
-The change of variables from $(a_0,a_1,b_1)$ to $(\nu_1,\nu_2,\nu_3)$ is governed
-by the Jacobian identity \eqref{eq:jacobian-k1} derived in
-Appendix~\ref{app:zero-mode-measure}.
-
-The remaining step is to relate the UV-defined functional measure to a
-finite-dimensional measure on collective coordinates. This is precisely the
-``laborious exercise'' Xi Yin alludes to: one should start from a Hamiltonian
-definition of the path integral (bosons and fermions), integrate out canonical
-momenta, and then separate the integration variables into zero modes and nonzero
-modes \cite[Eq.~(B.4), Eq.~(B.31)]{Yin:FoundationsStringTheory}.
-
-For instance, for bosonic coordinates with Hamiltonian
-$H(q,p)=\tfrac12 G^{ab}(q)p_a p_b+V(q)$, one step of the time-discretized
-Hamiltonian path integral gives a Gaussian in $p$,
-\begin{equation}
-  \int \frac{d^D p}{(2\pi)^D}
-  \exp\!\left(i p\cdot (q'-q) - i\Delta t\, \frac12 G^{ab}(q)p_a p_b\right)
-  \propto
-  \sqrt{\det G_{ab}(q)}\;
-  \exp\!\left(\frac{i}{2\Delta t}\,G_{ab}(q)(q'-q)^a(q'-q)^b\right),
-\label{eq:uv-integrate-out-p}
-\end{equation}
-so integrating out the momenta produces the covariant $\sqrt{\det G(q)}$ factor
-in the configuration-space measure \cite[Eq.~(B.4)]{Yin:FoundationsStringTheory}.
-
-In the present $(2,2)$ NLSM, the same mechanism occurs pointwise on the
-worldsheet. In conformal gauge and Minkowski worldsheet coordinates
-$(\tau,\sigma)$, the bosonic part of the internal sigma-model action is
+\paragraph{Why a Hamiltonian definition matters.}
+For a non-linear $\sigma$-model one should not think of the functional measure
+as a naive ``product of $dX$'': integrating out canonical momenta produces a
+field-dependent Jacobian factor. In Xi Yin's Appendix~B this point is
+illustrated for quantum mechanics \cite[Eq.~(B.4)]{Yin:FoundationsStringTheory}.
+For the bosonic sector of the sigma model the analogous statement can be seen
+from a time-discretized Hamiltonian path integral. In conformal gauge and
+Minkowski worldsheet coordinates $(\tau,\sigma)$, the bosonic action is
 \begin{equation}
   S_{\mathrm{bos}}
   =
@@ -1171,12 +1086,10 @@ $(\tau,\sigma)$, the bosonic part of the internal sigma-model action is
   \Bigl[
     G_{MN}(X)\bigl(\dot X^M \dot X^N - X'^M X'^N\bigr)
     + 2\,B_{MN}(X)\,\dot X^M X'^N
-  \Bigr],
+  \Bigr].
   \label{eq:nlsm-bos-action-hamiltonian}
 \end{equation}
-where $M,N=1,\dots,6$ label real coordinates on $X$ (the $\bR^{1,3}$ bosons
-contribute only constant measure factors). The canonical momentum conjugate to
-$X^M(\sigma)$ is
+The canonical momentum conjugate to $X^M(\sigma)$ is
 \begin{equation}
   P_M(\sigma)
   :=
@@ -1185,19 +1098,8 @@ $X^M(\sigma)$ is
   \frac{1}{2\pi \A'}\Bigl(G_{MN}(X)\dot X^N + B_{MN}(X)X'^N\Bigr).
   \label{eq:nlsm-canonical-momentum}
 \end{equation}
-In terms of $P_M$, the Hamiltonian density is quadratic in the momenta,
-\begin{equation}
-  \mathcal{H}
-  =
-  \pi \A'\,G^{MN}(X)\Bigl(P_M-\frac{1}{2\pi \A'}B_{MP}(X)X'^P\Bigr)
-  \Bigl(P_N-\frac{1}{2\pi \A'}B_{NQ}(X)X'^Q\Bigr)
-  +\frac{1}{4\pi \A'}\,G_{MN}(X)X'^M X'^N.
-  \label{eq:nlsm-hamiltonian-density}
-\end{equation}
-
-Therefore, in the time-discretized Hamiltonian path integral, at fixed $\sigma$
-the momentum integration is Gaussian. Writing $\Delta X^M:=X^M(\tau+\Delta\tau,\sigma)-X^M(\tau,\sigma)$,
-one finds the sigma-model analogue of \eqref{eq:uv-integrate-out-p},
+At fixed $\sigma$ the momentum integration is Gaussian. Writing
+$\Delta X^M:=X^M(\tau+\Delta\tau,\sigma)-X^M(\tau,\sigma)$, one finds
 \begin{equation}
   \begin{aligned}
     &\int \frac{d^6 P}{(2\pi)^6}\,
@@ -1217,33 +1119,15 @@ one finds the sigma-model analogue of \eqref{eq:uv-integrate-out-p},
   \end{aligned}
   \label{eq:nlsm-integrate-out-momenta}
 \end{equation}
-The shift by $B_{MN}X'^N$ affects only the phase (reproducing the $B$-term in
-the Lagrangian), while the Jacobian prefactor is the covariant
-$\sqrt{\det G(X)}$ factor. (The remaining term in \eqref{eq:nlsm-hamiltonian-density}
-proportional to $G_{MN}X'^M X'^N$ is independent of $P$ and simply reconstructs
-the rest of the Lagrangian action.) In complex coordinates on a K\"ahler target
-with $ds^2=2g_{i\bar j}\,dz^i d\bar z^{\bar j}$, one may equivalently write
-$\sqrt{\det G_{MN}}=\det(2g_{i\bar j})=2^3\det(g_{i\bar j})$.
+The $\sqrt{\det G(X)}$ factor is the sigma-model analogue of the familiar
+configuration-space Jacobian in quantum mechanics; the remaining short-time
+factor $(4\pi^2 i\A'\Delta\tau)^{-3}$ is background independent and is
+absorbed into $\mathcal{N}_\Lambda$.
 
-Equation \eqref{eq:nlsm-integrate-out-momenta} is the precise sense in which one
-cannot ``drop the momenta'': integrating them out produces a field-dependent
-Jacobian factor $\sqrt{\det G(X)}$ in the configuration-space measure. In our
-UV regulator based on expanding fluctuations in orthonormal eigenmodes of the
-quadratic kinetic operators, this Jacobian is built in: orthonormality is with
-respect to the $L^2$ inner products defined by the same target-space metric
-$G_{MN}(X_0)$ that appears in \eqref{eq:nlsm-integrate-out-momenta}. The
-remaining prefactor $(4\pi^2 i \A'\Delta\tau)^{-3}$ is independent of $X$ and
-becomes a moduli-independent normalization constant in the continuum limit; it
-may be absorbed into the definition of the regulated functional measure, and
-hence contributes only to the overall UV constant discussed around
-\eqref{eq:uv-measure-def}.
-
-For fermions there is no analogous short-time factor. The worldsheet fermion
-kinetic term is first order, so the time-discretized coherent-state path
-integral comes with a flat Berezin measure and no prefactor depending on
-$\Delta\tau$ \cite[Eq.~(B.31)]{Yin:FoundationsStringTheory}. Concretely, for a
-finite-dimensional Grassmann system with Hamiltonian $H(\chi,\eta)$, one step of
-the time-discretized path integral is
+For fermions there is no analogous short-time prefactor: the time-slice measure
+in a coherent-state path integral is flat \cite[Eq.~(B.31)]{Yin:FoundationsStringTheory}.
+Concretely, for a finite-dimensional Grassmann system with Hamiltonian
+$H(\chi,\eta)$, one step of the time-discretized path integral is
 \begin{equation}
   \langle\!\langle \eta'|e^{-i\hat H\Delta\tau}|\eta\rangle
   =
@@ -1254,295 +1138,131 @@ the time-discretized path integral is
 with no factor of $(\Delta\tau)^{\pm 1/2}$. Thus the entire $\Delta\tau$
 dependence of the local short-time normalization in the sigma model comes from
 the bosonic momentum integration \eqref{eq:nlsm-integrate-out-momenta}; all
-$\Delta\tau$-independent constants from both the bosonic and fermionic
-definitions of the regulated measure are absorbed into $\mathcal{N}_\Lambda$ in
+$\Delta\tau$-independent constants from both the bosonic and fermionic UV
+definitions are absorbed into $\mathcal{N}_\Lambda$ in
 \eqref{eq:uv-measure-def}.
 
-After splitting into zero and nonzero modes, the nonzero-mode integration
-produces a regulated determinant, while the zero-mode part becomes a Jacobian
-from the change of variables between the regulated mode coefficients and
-collective coordinates. This Jacobian can be written explicitly in terms of the
-$L^2$ Gram matrices of the bosonic and fermionic zero-mode wavefunctions.
+\subsection{Constant maps ($k=0$): fixing the overall normalization}
+\label{app:uv-k0}
+The point of introducing $\mathcal{N}_\Lambda$ in \eqref{eq:uv-measure-def} is
+that the sphere correlator \eqref{eq:yin-ccc-nsns} is \emph{not} defined as a
+normalized expectation value: we fix the conformal Killing symmetry using
+unintegrated insertions, so there is no separate sphere partition function by
+which to divide. The overall normalization of $C_{111}(t)$ is therefore part of
+the choice of normalization of the physical vertex operators, or equivalently
+of the four-dimensional fields.
 
-Concretely, let $m^a$ ($a=1,2,3$) be complex bosonic moduli and write the
-bosonic zero-mode deformation as $\delta Z = \delta m^a\,u_a + \delta\bar m^{\bar a}\,u_{\bar a}$,
-where $u_a$ are a chosen basis of bosonic zero modes (e.g.\ $u_a=\partial_{m^a}Z_0$).
-Choose an orthonormal basis $e_A$ ($A=1,2,3$) of this complex zero-mode space
-with respect to the quadratic-action inner product, so $u_a=e_A\,E^A{}_a$.
-Then the regulated bosonic measure restricted to zero modes transforms as
+This normalization is fixed unambiguously by the $k=0$ sector at large volume.
+In the constant-map sector the leading saddle is $Z^i(z,\bar z)=x^i\in X$ with
+vanishing classical action, and the large-volume limit of the internal
+three-point function can be evaluated directly from the semi-classical
+expressions \eqref{eq:uv-o1} and \eqref{eq:uv-o1-minusplus}. The result is
+\cite[Eq.~(19.182)]{Yin:FoundationsStringTheory}
 \begin{equation}
-  \prod_{A=1}^3 d^2 y^A
+  \lim_{{\rm Im}\,t\to+\infty} C_{111}(t)
   =
-  \left|\det E\right|^2 \prod_{a=1}^3 d^2 m^a
-  =
-  \det(g_{a\bar b})\;\prod_{a=1}^3 d^2 m^a,
-\label{eq:uv-bosonic-jacobian}
+  \int_X e_1^3
+  \;=:\;
+  C_1.
+  \label{eq:uv-k0-result}
 \end{equation}
-where $g_{a\bar b}:=\langle u_a,u_{\bar b}\rangle$ is the $L^2$ Gram matrix,
-defined using the quadratic kinetic term. In complex coordinates on $X$ we take
-\begin{equation}
-  \langle \delta Z,\delta Z'\rangle
-  :=
-  \frac{1}{2\pi \A'}\int_\Sigma d^2 z\,\sqrt{\gamma}\, g_{i\bar j}(Z_0,\bar Z_0)\,
-  \delta Z^i\,\delta Z'^{\bar j},
-  \label{eq:uv-inner-product}
-\end{equation}
-where $\gamma$ is the fixed reference worldsheet metric used to define the
-UV-regulated mode expansion.
+In a compact one-parameter situation this is the classical triple intersection
+number $\kappa=\int_X \alpha^3$ (with $e_1$ identified with the generator
+$\alpha$); in the noncompact resolved-conifold example $C_1$ is a finite
+constant determined by the chosen normalization of $e_1$.
 
-Similarly, expand the left-moving fermion zero modes in a basis $\rho_a$ and
-the right-movers in a basis $\wt\rho_a$,
-\begin{equation}
-  \psi_{(0)} = \zeta^a\,\rho_a,\qquad
-  \wt\psi_{(0)} = \wt\zeta^{\bar a}\,\wt\rho_{\bar a}.
-\label{eq:uv-fermion-zero-expansion}
-\end{equation}
-If $\rho_a$ and $\wt\rho_{\bar a}$ are chosen to be the superpartners of the
-bosonic zero modes (as in Xi Yin's discussion of $\zeta$-type modes in
-\cite[\S19.5.4]{Yin:FoundationsStringTheory}), then their $L^2$ Gram matrices are
-again $g_{a\bar b}$. Passing to orthonormal fermion zero-mode bases therefore
-produces the Berezin Jacobians
-\begin{equation}
-  \prod_{A=1}^3 d\chi^A
-  =
-  \left(\det g_{a\bar b}\right)^{-\frac12}\prod_{a=1}^3 d\zeta^a,
-  \qquad
-  \prod_{A=1}^3 d\wt\chi^A
-  =
-  \left(\det g_{a\bar b}\right)^{-\frac12}\prod_{\bar a=1}^3 d\wt\zeta^{\bar a},
-\label{eq:uv-berezin-jacobians}
-\end{equation}
-so the factors of $\det g_{a\bar b}$ cancel between the bosonic and the two
-fermionic chiral systems in the combined zero-mode measure. The resulting
-collective-coordinate measure is thus independent of the choice of
-orthonormalization, and can be written in any convenient coordinate system on
-${\cal M}_1$. In the coefficient patch $b_0\neq 0$ it takes the standard form
-\cite[Eq.~(19.203)]{Yin:FoundationsStringTheory}
-\begin{equation}
-  d^6\nu\, d^3\zeta\, d^3\wt\zeta
-  =
-  \left|R\,b_0\; da_0\,da_1\,db_1\right|^2\;
-  \prod_{n=1}^3 d\zeta^{(n)}\,d\wt\zeta^{(n)}.
-  \label{eq:yin-measure-k1}
-\end{equation}
+Equation \eqref{eq:uv-k0-result} is the convention we adopt: it fixes the
+normalization of ${\cal O}_1$ and ${\cal O}_1^{(-1,1)}$ (hence of the modulus
+coordinate $t$ and the vertex ${\cal V}_\phi$), and it also fixes the overall
+UV constant $\mathcal{N}_\Lambda$ once and for all. With this choice made, the
+coefficients of the instanton series are predicted \emph{relative} to the
+constant-map piece.
 
-With these choices, the $k=1$ instanton contribution to \eqref{eq:yin-ccc-nsns}
-reduces to a finite-dimensional integral over ${\cal M}_1$ and the fermion zero
-modes. Performing the Berezin integral over the $\zeta$ zero modes produces the
-determinant of the evaluation matrix at the three marked points, which for the
-monomial basis is the Vandermonde determinant
-\begin{equation}
-  \det_{1\le a,b\le 3}(z_a^{b-1})=z_{12}z_{23}z_{31}.
-\label{eq:uv-vandermonde}
-\end{equation}
-The operator insertions contribute factors of $(e_1)_{\nu\bar\nu}(\nu_a,\bar\nu_a)$
-and the explicit zero-mode wavefunctions contribute $|Q(z_a)|^{-4}$ factors.
-Putting these ingredients together reproduces the explicit integrand written in
-\cite[Eq.~(19.204)]{Yin:FoundationsStringTheory}. Using the Jacobian
-\eqref{eq:jacobian-k1}, the Vandermonde factor cancels the $z_{12}z_{23}z_{31}$
-in the denominator, while the $Q(z_a)$ factors cancel between the Jacobian and
-the zero-mode wavefunctions. The remaining integral is simply
-\begin{equation}
-  e^{2\pi i t}\int \prod_{a=1}^3 d^2\nu_a\,(-i)\,(e_1)_{\nu\bar\nu}(\nu_a,\bar\nu_a).
-\label{eq:uv-k1-remaining}
-\end{equation}
-With the standard normalization $\int_{\CP^1} e_1=1$, this evaluates to
-\begin{equation}
-  e^{2\pi i t}=q,
-\label{eq:uv-k1-result}
-\end{equation}
-Thus the \emph{moduli-dependent} part of the $k=1$ contribution is $q$, as
-predicted by mirror symmetry. More precisely, after separating the path integral
-into zero modes and nonzero modes, the degree-one saddle contributes
-\begin{equation*}
-  C_{111}\Big|_{k=1}
-  = q\,\mathcal{C}_\Lambda,
-\end{equation*}
-where $\mathcal{C}_\Lambda$ is a moduli-independent constant given by the
-regulated ratio of nonzero-mode Gaussian path integrals (equivalently, the
-ratio of regulated determinants) between the instanton saddle and the
-perturbative vacuum, together with any finite renormalization of the operator
-normalization. Importantly, $\mathcal{C}_\Lambda$ is \emph{not} contaminated by
-the universal short-time factors of the Hamiltonian discretization: the bosonic
-momentum integration produces the background-independent factor
-$(4\pi^2 i\A'\Delta\tau)^{-3}$ in \eqref{eq:nlsm-integrate-out-momenta}, while
-the Grassmann time-slice measure has no $\Delta\tau$ prefactor
-\eqref{eq:uv-fermion-timeslice}. Since these factors depend only on the field
-content and regulator (not on the saddle), they cancel in the determinant ratio
-defining $\mathcal{C}_\Lambda$ (and in any case may be absorbed into the
-field-independent normalization $\mathcal{N}_\Lambda$ in \eqref{eq:uv-measure-def}).
-Mirror symmetry requires that $\mathcal{C}_\Lambda=1$ in the conventions fixed
-above, i.e.\ that the coefficient of $q$ in $C_{111}(t)$ is exactly $1$. The
-direct UV evaluation in \eqref{eq:uv-clambda-one} below confirms this.
+\subsection{Instantons ($k\ge 1$): reduction to the projective-space integral}
+We now explain why the UV definition \eqref{eq:uv-measure-def}, together with
+Appendices~\ref{app:pedestrian-obstruction} and \ref{app:zero-mode-measure},
+implies the expected coefficient of the multiple-cover series.
 
-\paragraph{How to compute \texorpdfstring{$\mathcal{C}_\Lambda$}{C\_Lambda}.}
-Fix the UV regulator and measure as in \eqref{eq:uv-mode-expansion} and
-\eqref{eq:uv-measure-def}. Expand the gauge-fixed $(2,2)$ NLSM action to
-quadratic order in the \emph{nonzero} fluctuations about (i) the degree-one
-instanton saddle and (ii) the perturbative vacuum saddle, and denote the
-corresponding quadratic actions by $S^{(2)}_{\mathrm{inst}}$ and
-$S^{(2)}_{\mathrm{vac}}$. Using the same regulated measure for both saddles,
-define the regulated nonzero-mode Gaussian integrals
-\begin{equation}
-  Z_{\mathrm{nzm}}^{\mathrm{inst}}(\Lambda)
-  :=
-  \int [D\delta Z\,D\delta\psi\,D\delta\wt\psi]^{\mathrm{nzm}}_\Lambda\,e^{-S^{(2)}_{\mathrm{inst}}},
-  \qquad
-  Z_{\mathrm{nzm}}^{\mathrm{vac}}(\Lambda)
-  :=
-  \int [D\delta Z\,D\delta\psi\,D\delta\wt\psi]^{\mathrm{nzm}}_\Lambda\,e^{-S^{(2)}_{\mathrm{vac}}},
-  \label{eq:uv-znzm-defs}
-\end{equation}
-where $[D\delta Z\,D\delta\psi\,D\delta\wt\psi]^{\mathrm{nzm}}_\Lambda$ denotes
-the measure \eqref{eq:uv-measure-def} (and its right-moving analogue) restricted
-to nonzero modes. Then
-\begin{equation}
-  \mathcal{C}_\Lambda := \frac{Z_{\mathrm{nzm}}^{\mathrm{inst}}(\Lambda)}{Z_{\mathrm{nzm}}^{\mathrm{vac}}(\Lambda)}.
-  \label{eq:uv-clambda-def}
-\end{equation}
-At the Gaussian level this ratio is equivalently expressed as a ratio of
-regulated determinants,
-\begin{equation}
-  \mathcal{C}_\Lambda
-  =
-  \frac{\det{}'\mathcal{O}^{\mathrm{inst}}_{F,L}\,\det{}'\mathcal{O}^{\mathrm{inst}}_{F,R}}{\det{}'\mathcal{O}^{\mathrm{inst}}_{B}}\,
-  \frac{\det{}'\mathcal{O}^{\mathrm{vac}}_{B}}{\det{}'\mathcal{O}^{\mathrm{vac}}_{F,L}\,\det{}'\mathcal{O}^{\mathrm{vac}}_{F,R}},
-  \label{eq:uv-clambda-det-ratio}
-\end{equation}
-where $\mathcal{O}_{B}$ is the bosonic quadratic kinetic operator and
-$\mathcal{O}_{F,L/R}$ are the left-/right-moving fermion kinetic operators,
-acting on nonzero fluctuations about the specified saddle, and $\det{}'$ omits
-the zero-eigenvalue modes already treated as collective coordinates. In this
-definition, all universal short-time normalization factors from the Hamiltonian
-discretization cancel between the two saddles (cf.\ the bosonic prefactor in
-\eqref{eq:nlsm-integrate-out-momenta} and the absence of a fermionic
-$\Delta\tau$ prefactor in \eqref{eq:uv-fermion-timeslice}).
+\paragraph{Classical weight.}
+In the degree-$k$ sector, the relevant saddles are holomorphic maps
+$Z:\Sigma\simeq\CP^1\to X$ with $Z_*[\Sigma]=k[C]$ for a rigid $(-1,-1)$ curve
+$C\subset X$. Evaluating the Euclidean action on such a saddle gives the
+classical weight $e^{-S_{\mathrm{inst}}}=q^k$ in the normalization
+\eqref{eq:uv-q-def} \cite[Eq.~(19.184)]{Yin:FoundationsStringTheory}.
 
-\subsubsection{Direct one-loop evaluation of \texorpdfstring{$\mathcal{C}_\Lambda$}{C\_Lambda}}
-We now evaluate \eqref{eq:uv-clambda-def} in the UV scheme fixed above. The key
-point is that, around any purely bosonic saddle $Z_0$ (instanton or vacuum), the
-nonzero modes of the internal $(2,2)$ NLSM form Gaussian multiplets whose
-bosonic and fermionic determinants cancel mode-by-mode.
+\paragraph{Nonzero modes.}
+Expanding the $(2,2)$ NLSM action around a holomorphic saddle, the nonzero modes
+enter quadratically at one loop. On the complement of the collective-coordinate
+zero modes, the quadratic bosonic operator is (up to a conventional factor of
+two) the square of the fermion kinetic operator, so the bosonic and fermionic
+determinants cancel mode-by-mode; any remaining factor is background
+independent and is already fixed by the $k=0$ convention
+\eqref{eq:uv-k0-result}. Thus the moduli dependence of the instanton sector is
+entirely governed by the zero modes.
 
-For a K\"ahler target with vanishing $H$-flux, the internal action in complex
-coordinates is \cite[Ch.~9, Eq. (9.12)]{Yin:FoundationsStringTheory}
-\begin{equation}
-  \begin{aligned}
-    S
-    &=
-    \frac{1}{2\pi \A'}\int_\Sigma d^2z\,\sqrt{\gamma}\,
-    g_{i\bar j}(Z,\bar Z)\,
-    \Bigl(\partial Z^i\,\bar\partial \bar Z^{\bar j}+\partial \bar Z^{\bar j}\,\bar\partial Z^i\Bigr)
-    +\frac{1}{2\pi}\int_\Sigma d^2z\,\sqrt{\gamma}\,
-    g_{i\bar j}(Z,\bar Z)\,\Bigl(\psi^{\bar j}\nabla_{\bar z}\psi^i+\wt\psi^{\bar j}\nabla_{z}\wt\psi^i\Bigr)\\
-    &\qquad
-    +\frac{\A'}{4\pi}\int_\Sigma d^2z\,\sqrt{\gamma}\,
-    R_{i\bar jk\bar\ell}(Z,\bar Z)\,\psi^i\psi^{\bar j}\wt\psi^k\wt\psi^{\bar\ell},
-  \end{aligned}
-  \label{eq:uv-twotwoaction-xy}
-\end{equation}
-where $\nabla$ is the pullback of the Levi--Civita connection on $X$ (so
-$\nabla_{\bar z}\psi^i=\bar\partial\psi^i+\Gamma^i_{jk}(Z)\,\bar\partial Z^j\,\psi^k$,
-and similarly for the other components). Expanding about a bosonic saddle
-$Z_0$ and setting the background fermions to zero, the nonzero-mode quadratic
-action takes the form
-\begin{equation}
-  S^{(2)}_{\mathrm{nzm}}
-  =
-  \langle \delta Z,\,\mathcal{O}_{B}\,\delta Z\rangle
-  + \langle \delta\psi,\,\mathcal{O}_{F,L}\,\delta\psi\rangle
-  + \langle \delta\wt\psi,\,\mathcal{O}_{F,R}\,\delta\wt\psi\rangle,
-  \label{eq:uv-quadratic-nzm-operators}
-\end{equation}
-with the inner product on bosonic fluctuations defined in \eqref{eq:uv-inner-product}
-and the fermion inner products defined analogously using the quadratic kinetic
-terms. Concretely, in the bosonic sector one may write
-\begin{equation}
-  S^{(2)}_{\mathrm{bos,nzm}}
-  =
-  \frac{1}{2\pi \A'}\int_\Sigma d^2z\,\sqrt{\gamma}\,
-  g_{i\bar j}(Z_0,\bar Z_0)\,
-  \Bigl((\nabla_{z}\delta Z^i)\,(\nabla_{\bar z}\delta\bar Z^{\bar j})
-  +(\nabla_{z}\delta\bar Z^{\bar j})\,(\nabla_{\bar z}\delta Z^i)\Bigr)
-  =
-  2\,\langle \delta Z,\,\nabla_{\bar z}^\dagger\nabla_{\bar z}\,\delta Z\rangle,
-  \label{eq:uv-ob-from-dbar}
-\end{equation}
-so that
-\begin{equation}
-  \mathcal{O}_{B}=2\,\nabla_{\bar z}^\dagger\nabla_{\bar z},
-  \qquad
-  \mathcal{O}_{F,L}=\nabla_{\bar z},
-  \qquad
-  \mathcal{O}_{F,R}=\nabla_{z},
-  \label{eq:uv-ob-of-operators}
-\end{equation}
-on the corresponding nonzero-mode subspaces. (On a closed surface,
-$\nabla_{z}$ is the adjoint of $-\nabla_{\bar z}$ with respect to the $L^2$
-pairings, so $\mathcal{O}_{B}$ is the positive operator obtained from the
-fermion kinetic operator by taking the adjoint and composing.)
+\paragraph{Zero modes and the obstruction insertion.}
+The bosonic collective coordinates are the moduli of degree-$k$ maps
+$\CP^1\to C\simeq\CP^1$, compactified to
+$\overline{\mathcal{M}}_k(C)\simeq\CP^{2k+1}$. As reviewed in the main text,
+the three operator insertions enforce three incidence conditions at the fixed
+marked points, contributing the hyperplane class $H^3$ on $\CP^{2k+1}$.
 
-To evaluate the Gaussian path integral explicitly, it is enough to use the
-Hamiltonian UV definition of the measure reviewed above: discretize the worldsheet
-in $\tau$ with step $\Delta\tau$ (and, if desired, also discretize $\sigma$),
-integrate out the bosonic canonical momenta (giving \eqref{eq:nlsm-integrate-out-momenta}),
-and use the coherent-state Grassmann time-slice measure (giving
-\eqref{eq:uv-fermion-timeslice}). This produces a finite-dimensional Gaussian
-integral whose change of variables to an orthonormal mode basis has unit Jacobian.
+For $k>1$ there are additional normal-direction fermion zero modes.
+Appendix~\ref{app:zero-mode-measure} shows directly in Polyakov-path-integral
+terms that these modes are absorbed by expanding the universal curvature
+four-fermi interaction, and that integrating them out inserts the
+Chern--Weil representative of $c_{\mathrm{top}}(\mathrm{Obs}_k)$ into the
+moduli-space integral. In our multiple-cover problem
+Appendix~\ref{app:pedestrian-obstruction} gives \eqref{eq:obs-k}--\eqref{eq:ctop-obs-k},
+namely $\mathrm{Obs}_k\simeq\mathcal{L}^{\oplus(2k-2)}$ and
+$c_{\mathrm{top}}(\mathrm{Obs}_k)=H^{2k-2}$ on $\CP^{2k+1}$.
 
-In such a finite-dimensional Gaussian system, let $D$ be the matrix
-representing $\nabla_{\bar z}$ on the regulated nonzero-mode subspace, so the
-bosonic quadratic form is $2\,D^\dagger D$. Using the regulated measure
-\eqref{eq:uv-measure-def} (and its right-moving analogue), the nonzero-mode
-integrals evaluate to
+Putting these ingredients together, the degree-$k$ contribution to
+\eqref{eq:yin-ccc-nsns} is
 \begin{equation}
-  Z_{\mathrm{nzm}}(\Lambda)
+  C_{111}\Big|_{k}
   =
-  \mathcal{N}^{\mathrm{nzm}}_\Lambda\,
-  \frac{\pi^{N}}{\det(2\,D^\dagger D)}\,\det(D)\,\det(D^\dagger)
+  q^k
+  \int_{\CP^{2k+1}} H^3\,c_{\mathrm{top}}(\mathrm{Obs}_k)
   =
-  \mathcal{N}^{\mathrm{nzm}}_\Lambda\left(\frac{\pi}{2}\right)^{N},
-  \label{eq:uv-gaussian-det-identity}
+  q^k\int_{\CP^{2k+1}} H^{2k+1}
+  =
+  q^k.
+  \label{eq:uv-k-result}
 \end{equation}
-where $N$ is the regulated nonzero-mode dimension and $\mathcal{N}^{\mathrm{nzm}}_\Lambda$
-is the field-independent normalization inherited from \eqref{eq:uv-measure-def}.
-In going to the final expression we used $\det(D^\dagger D)=\det(D^\dagger)\det(D)$
-and $\det(2\,D^\dagger D)=2^{N}\det(D^\dagger D)$, which hold as identities of
-finite-dimensional matrices in the Hamiltonian UV regulator.
-For the genus-zero three-point function \eqref{eq:yin-ccc-nsns}, the perturbative
-saddle and the $k=1$ instanton saddle have the same number of collective-coordinate
-zero modes treated separately (three complex bosonic moduli and three complex
-left-/right-moving fermion zero modes), so the regulated nonzero-mode dimension
-$N$ is the same in numerator and denominator of \eqref{eq:uv-clambda-def}.
-We conclude that
-\begin{equation}
-  \mathcal{C}_\Lambda
-  =\frac{Z_{\mathrm{nzm}}^{\mathrm{inst}}(\Lambda)}{Z_{\mathrm{nzm}}^{\mathrm{vac}}(\Lambda)}
-  =1
-  \label{eq:uv-clambda-one}
-\end{equation}
-in the conventions fixed above. This is precisely the normalization required to
-match the mirror-symmetry prediction stated around \eqref{eq:mirror-prediction-yukawa}.
+In the conifold normalization $\int_C e_1=1$ the only remaining dependence on
+target-space data is therefore the constant-map term $C_1$ and the instanton
+series $\sum_{k\ge1}q^k$.
 
-\subsection{General $k$: structure and relation to $c_{\mathrm{top}}(\mathrm{Obs}_k)$}
-For $k\ge2$ there are additional normal-direction fermion zero modes. In the
-UV-regularized path integral they are absorbed by pulling down $2k-2$ powers of
-the curvature four-fermi term, producing the
-finite-dimensional Berezin integral that inserts
-$c_{\mathrm{top}}(\mathrm{Obs}_k)$ as in Appendix~\ref{app:zero-mode-measure}.
-On the open locus $R(P,Q)\neq 0$, the change of variables from coefficient
-coordinates to evaluation variables $(\nu_a,\mu_i)$ yields the explicit
-holomorphic top-form identity \eqref{eq:jacobian-general}, and combining it with
-the explicit normal-sector zero-mode wavefunctions gives the local form of the
-zero-mode measure \eqref{eq:zeromode-measure-local}.
-The same Vandermonde cancellations as in the $k=1$ case reduce the remaining
-integral to the projective-space intersection number
+\subsection{Result and mirror-symmetry target}
+In the one-parameter situation, mirror symmetry fixes the exact genus-zero
+prepotential $F_0(t)$ (up to an additive polynomial of degree $\le 2$) from
+period integrals on the mirror Calabi--Yau \cite{Candelas:1990rm}. In the
+coordinate normalized by \eqref{eq:uv-q-def} this implies the standard instanton
+expansion \cite{Candelas:1990rm,AspinwallMorrison:1991tft}
 \begin{equation}
-  \int_{\CP^{2k+1}} H^3\,c_{\mathrm{top}}(\mathrm{Obs}_k)=1,
-\label{eq:uv-intersection-number}
+  F_0(t)=\frac{\kappa}{6}t^3+\frac{1}{(2\pi i)^3}\sum_{d\ge1} n_d\,\operatorname{Li}_3(q^d)
+  +(\text{at most quadratic in }t),
+  \label{eq:mirror-prediction-prepotential}
 \end{equation}
-and the only $k$-dependence of the instanton contribution to the Yukawa coupling
-is therefore the classical weight $q^k$.
+and hence the Yukawa coupling prediction
+\begin{equation}
+  C_{ttt}(t)=\partial_t^3 F_0(t)
+  =\kappa+\sum_{d\ge1} n_d\,\frac{d^3 q^d}{1-q^d}.
+  \label{eq:mirror-prediction-yukawa}
+\end{equation}
+Our worldsheet derivation determines the instanton coefficient in this
+expansion once the $k=0$ normalization \eqref{eq:uv-k0-result} is fixed. In the
+local situation of a single rigid $(-1,-1)$ curve with $\int_C e_1=1$ and a
+single primitive contribution $n_1=1$, \eqref{eq:uv-k-result} gives
+\begin{equation}
+  C_{111}(t)=C_1+\sum_{k\ge1} q^k
+  =
+  C_1+\frac{q}{1-q},
+  \qquad q=e^{2\pi i t},
+  \label{eq:uv-final-answer}
+\end{equation}
+in agreement with \eqref{eq:mirror-prediction-yukawa}.
 
 \bibliographystyle{JHEP}
 \bibliography{stringrefs}
