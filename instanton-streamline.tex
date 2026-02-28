@@ -9,12 +9,292 @@
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 
-\title{Instanton Streamline}
-\date{}
-
 \begin{document}
 
-\maketitle
+\title{Instanton Streamline}
+
+\section{Multiple covers from the Polyakov path integral}
+\label{sec:multiple-covers-polyakov}
+
+This section streamlines the multiple-cover computation of Aspinwall--Morrison
+\cite{AspinwallMorrison:1991tft} by keeping only the worldsheet path-integral
+logic needed for the final answer. A closely related (and very efficient)
+presentation appears in Distler's lecture notes \cite{Distler:1992n2}. The
+bottom line is that the genus-zero three-point couplings are governed by a
+projective-space intersection number, so the multi-cover sum becomes a geometric
+series. The familiar $1/k^3$ weight arises only after integrating to the
+prepotential.
+
+\subsection{Protected genus-zero couplings and localization}
+We consider the (gauge-fixed) Polyakov path integral of the $(2,2)$ non-linear
+$\sigma$-model on a Calabi--Yau threefold $X$ and focus on genus-zero three-point
+functions of marginal operators associated with $(1,1)$ classes. These
+correlators compute the vector-multiplet Yukawa couplings and can be packaged
+into a prepotential $F_0(t)$ via
+\begin{equation}
+  C_{abc}(t)=\partial_a\partial_b\partial_c F_0(t).
+\end{equation}
+
+These correlators are protected (four-dimensional $\mathcal{N}=2$ F-terms) and
+depend holomorphically on the complexified K\"ahler parameters. In particular
+they are insensitive to the overall sigma-model coupling, so we may evaluate
+them in the large-volume regime, where the gauge-fixed Polyakov path integral
+admits a semiclassical expansion about classical saddles.
+
+In Euclidean signature, the bosonic part of the $\sigma$-model action (in
+conformal gauge) is, up to an overall normalization,
+\begin{equation}
+  S_{\mathrm{bos}}\sim \int_\Sigma \|d\phi\|^2 + i\int_\Sigma \phi^*B.
+\end{equation}
+For a K\"ahler target one can complete the square to obtain the standard bound
+\begin{equation}
+  \int_\Sigma \|d\phi\|^2
+  = \int_\Sigma \|d\phi - * (I\circ d\phi)\|^2 + \int_\Sigma \phi^*J
+  \ge \int_\Sigma \phi^*J,
+\end{equation}
+where $I$ is the complex structure on $X$ and $*$ is the Hodge star on $\Sigma$.
+The bound is saturated precisely on (anti-)holomorphic maps; we choose the
+convention in which the instantons obey $\bar\partial\phi=0$ and contribute
+weights $q^\beta$, while anti-instantons would contribute $\bar q^\beta$. Since
+the Yukawa couplings $C_{abc}(t)$ are holomorphic functions of the moduli, only
+the holomorphic saddles contribute \cite{Distler:1992n2,AspinwallMorrison:1991tft}.
+
+Evaluating the bosonic action on a holomorphic saddle $\phi$ with
+$\beta:=\phi_*[\Sigma]\in H_2(X,\bZ)$, the
+$B$-field term depends only on the homology class via
+$\int_\Sigma \phi^*B=\int_\beta B$, while the kinetic term saturates the bound
+above and contributes the area $\int_\beta J$ in the same normalization. Thus
+the Polyakov path integral in the instanton sector $\beta$ carries the
+characteristic semiclassical factor $\exp(-\int_\beta J-i\int_\beta B)$, which
+we package into the complexified K\"ahler class
+\begin{equation}
+  \omega := J+iB,
+  \qquad
+  q^\beta := \exp\!\left(-\int_\beta \omega\right),
+\end{equation}
+for effective classes $\beta$ with $\int_\beta J>0$.
+
+\subsection{Degree-k maps to an isolated rational curve}
+Let $C\simeq\CP^1\subset X$ be a rigid rational curve (so that there are no
+bosonic zero modes moving the image curve inside $X$). For a smooth rational
+curve in a Calabi--Yau threefold, this implies its normal bundle is of type
+$(-1,-1)$, i.e.
+\begin{equation}
+  N_{C/X}\simeq \mathcal{O}_C(-1)\oplus \mathcal{O}_C(-1).
+\end{equation}
+This can be seen directly from the worldsheet. Infinitesimal
+deformations that move the image curve inside $X$ appear as bosonic zero modes
+normal to $C$, counted by $H^0(C,N_{C/X})$; rigidity means $H^0(C,N_{C/X})=0$.
+By the Grothendieck splitting theorem,
+$N_{C/X}\simeq\mathcal{O}_C(a)\oplus\mathcal{O}_C(b)$ for some integers $a,b$.
+Since $X$ is Calabi--Yau, $c_1(T_X)=0$, and the exact sequence
+$0\to T_C\to T_X|_C\to N_{C/X}\to 0$ gives
+$a+b=c_1(N_{C/X})=-c_1(T_C)=-2$ (using $T_C\simeq\mathcal{O}_C(2)$). The
+vanishing of $H^0(C,N_{C/X})$ forces $a,b<0$, hence $a=b=-1$.
+
+Consider holomorphic maps $\phi:\Sigma\simeq\CP^1\to C$ of degree $k\ge1$. Such a
+map can be written in homogeneous coordinates as a ratio of degree-$k$
+polynomials
+\begin{equation}
+  [x:y]\mapsto [A(x,y):B(x,y)],
+  \qquad
+  A=\sum_{i=0}^k a_i x^i y^{k-i},\quad
+  B=\sum_{i=0}^k b_i x^i y^{k-i},
+\end{equation}
+with $(A,B)\neq(0,0)$, modulo overall rescaling $(A,B)\sim \lambda(A,B)$. The
+space of such pairs is $\CP^{2k+1}$. Imposing that $A$ and $B$ have no common
+factor gives the open locus of honest degree-$k$ covers; allowing common factors
+compactifies the moduli space back to $\CP^{2k+1}$ \cite{AspinwallMorrison:1991tft}.
+We denote this compactified space by
+\begin{equation}
+  \overline{\mathcal{M}}_k(C)\simeq \CP^{2k+1}.
+\end{equation}
+Let $H\in H^2(\CP^{2k+1},\bZ)$ be the hyperplane class.
+
+\subsection{Zero modes and the obstruction class (physics version)}
+For maps with image contained in $C$, fluctuations in the normal directions live
+in $\phi^*N_{C/X}\simeq\mathcal{O}_{\CP^1}(-k)\oplus\mathcal{O}_{\CP^1}(-k)$.
+Thus the obstruction space has complex dimension
+\begin{equation}
+  \dim_\bC H^1(\CP^1,\phi^*N_{C/X})
+  = 2\,\dim_\bC H^1(\CP^1,\mathcal{O}(-k))
+  = 2(k-1)=2k-2
+  \qquad (k\ge1).
+\end{equation}
+In the Polyakov path integral this shows up as extra fermion zero modes for
+$k>1$. Concretely, the $(2,2)$ $\sigma$-model action contains the universal
+four-fermi curvature interaction (schematically)
+\begin{equation*}
+  S_{4f}\sim \int_\Sigma R_{i\bar jk\bar l}(\phi)\,
+  \psi_{+}^{i}\psi_{+}^{\bar j}\psi_{-}^{k}\psi_{-}^{\bar l},
+\end{equation*}
+where $\psi_\pm^i,\psi_\pm^{\bar i}$ are the worldsheet fermions valued in
+$\phi^*T^{1,0}X$ and $\phi^*T^{0,1}X$. In an instanton background whose image
+lies in $C$, the additional normal-direction fermion zero modes span
+$H^1(\Sigma,\phi^*N_{C/X})$ (and its complex conjugate). Let
+$M=\overline{\mathcal{M}}_k(C)$ and denote the corresponding Grassmann
+collective coordinates by $\eta^A,\bar\eta^{\bar A}$, $A=1,\dots,r$ with
+$r=2k-2$.
+
+Supersymmetry also pairs the bosonic instanton moduli $m^a$ on $M$ with fermion
+zero modes $\theta^a,\bar\theta^{\bar a}$ (the collective coordinates obtained
+by acting with the unbroken supercharges). Projecting $S_{4f}$ onto the zero
+modes gives an effective coupling on $M$ of the form
+\begin{equation*}
+  S_{4f}^{(0)}=\bar\eta_{\bar A}\,(F_{a\bar b})^{\bar A}{}_B\,\eta^B\;\theta^a\bar\theta^{\bar b},
+\end{equation*}
+where $F$ is the curvature two-form of the natural connection on the bundle of
+normal-direction zero modes, i.e.\ on the obstruction bundle
+$\mathrm{Obs}_k\to M$. The path integral over the $r$ complex obstruction zero
+modes is then a finite-dimensional Gaussian Berezin integral:
+\begin{equation*}
+  \int \prod_{A=1}^r d\eta^A d\bar\eta^{\bar A}\,
+  \exp\!\left(-\bar\eta_{\bar A}F^{\bar A}{}_B\eta^B\right)
+  = \det(F),
+\end{equation*}
+with $F^{\bar A}{}_B:=(F_{a\bar b})^{\bar A}{}_B\,\theta^a\bar\theta^{\bar b}$
+an $r\times r$ matrix of two-forms on $M$. By the
+Chern--Weil formula this determinant is, up to the conventional factor
+$(2\pi i)^{-r}$, a representative of $c_{\mathrm{top}}(\mathrm{Obs}_k)$. Thus
+integrating out the extra normal-direction fermion zero modes inserts
+$c_{\mathrm{top}}(\mathrm{Obs}_k)$ in the moduli-space integral.
+
+In the present case one can determine this obstruction bundle directly on
+$\overline{\mathcal{M}}_k(C)\simeq\CP^{2k+1}$ by tracking the normal-direction
+fermion zero modes in the instanton background. Let $M:=\overline{\mathcal{M}}_k(C)$,
+let $Z:=M\times \Sigma\times C$ with projections $\pi:Z\to M$,
+$p:Z\to\Sigma\simeq\CP^1$, and $\rho:Z\to C\simeq\CP^1$, and let
+$\Gamma\subset Z$ be the universal graph of the maps, cut out by
+\begin{equation*}
+  A(x,y)\,t - B(x,y)\,s = 0,
+\end{equation*}
+where $[x:y]\in\Sigma$ and $[s:t]\in C$. Since this equation is homogeneous of
+degree $1$ in the coefficients $(a_i,b_i)$, degree $k$ in $(x,y)$, and degree $1$
+in $(s,t)$, the associated divisor line bundle is
+\begin{equation*}
+  \mathcal{O}_Z(\Gamma)\simeq \pi^*\mathcal{O}_M(1)\otimes p^*\mathcal{O}_\Sigma(k)\otimes \rho^*\mathcal{O}_C(1).
+\end{equation*}
+
+For one normal direction set $E:=\rho^*\mathcal{O}_C(-1)$. For a map
+$\phi:\Sigma\to C$ represented by $[A,B]\in M$, the restriction
+$E|_{\Gamma_\phi}$ is precisely $\phi^*\mathcal{O}_C(-1)\simeq\mathcal{O}_\Sigma(-k)$,
+so the corresponding fermion zero modes span $H^1(\Sigma,\phi^*\mathcal{O}_C(-1))$.
+Using the exact sequence
+\begin{equation*}
+  0\to E(-\Gamma)\to E\to E|_\Gamma\to 0,
+\end{equation*}
+and the vanishing $H^*(C,\mathcal{O}_C(-1))=0$ (hence $R^i\pi_*E=0$), we obtain
+\begin{equation*}
+  R^1\pi_*(E|_\Gamma)\simeq R^2\pi_*(E(-\Gamma)).
+\end{equation*}
+But
+\begin{equation*}
+  E(-\Gamma)\simeq \pi^*\mathcal{O}_M(-1)\otimes p^*\mathcal{O}_\Sigma(-k)\otimes \rho^*\mathcal{O}_C(-2),
+\end{equation*}
+so by K\"unneth and $\dim_\bC H^1(\Sigma,\mathcal{O}(-k))=k-1$,
+$R^2\pi_*(E(-\Gamma))\simeq \mathcal{O}_M(-1)^{\oplus(k-1)}$. Including the two
+normal directions therefore gives the obstruction bundle as a direct sum of
+$2k-2$ copies of the tautological line bundle $\mathcal{L}:=\mathcal{O}_M(-1)$:
+\begin{equation}
+  \mathrm{Obs}_k\simeq \mathcal{L}^{\oplus (2k-2)},
+\end{equation}
+so that
+\begin{equation}
+  c_{\mathrm{top}}(\mathrm{Obs}_k)=c_1(\mathcal{L})^{2k-2}=H^{2k-2}\in H^{4k-4}(\CP^{2k+1},\bZ),
+\end{equation}
+where $H=-c_1(\mathcal{L})$ is the hyperplane class. This matches the
+bundle-theoretic computation of Aspinwall--Morrison and the worldsheet
+zero-mode analysis in Distler's notes \cite{AspinwallMorrison:1991tft,Distler:1992n2}.
+
+\subsection{Incidence conditions as hyperplanes}
+On the sphere, the conformal Killing group $\mathrm{PSL}(2,\bC)$ lets us fix the
+three insertion points at $p_1,p_2,p_3\in\Sigma\simeq\CP^1$, so the only bosonic
+zero modes to integrate are the instanton moduli, i.e.\ the coefficients
+$(a_i,b_i)$ of the degree-$k$ map.
+
+After integrating over the fermion zero modes, each marginal operator
+associated with a $(1,1)$ class $\omega_a$ inserts the pullback of $\omega_a$
+along the evaluation map at the corresponding marked point,
+$\mathrm{ev}_{p_i}:\overline{\mathcal{M}}_k(C)\to X$, $\phi\mapsto \phi(p_i)$
+\cite{Distler:1992n2,AspinwallMorrison:1991tft}. Restricting to maps with image
+contained in $C$, choose a divisor representative $D_a\subset X$ Poincar\'e dual
+to $\omega_a$, so that the insertion enforces the incidence condition
+$\phi(p_i)\in D_a$. Since $D_a\cap C$ consists of $\int_C\omega_a$ points (counted
+with multiplicity), each insertion contributes an overall factor $\int_C\omega_a$
+times a universal codimension-one class on $\overline{\mathcal{M}}_k(C)$.
+
+To identify this class, write $p_i=[x_i:y_i]\in\Sigma\simeq\CP^1$ and a target
+point as $r=[s:t]\in C\simeq\CP^1$. For the map $[x:y]\mapsto[A(x,y):B(x,y)]$,
+the constraint $\phi(p_i)=r$ is
+\begin{equation}
+  A(x_i,y_i)\,t - B(x_i,y_i)\,s = 0,
+\end{equation}
+which is linear in the coefficients $(a_i,b_i)$ and hence defines a hyperplane
+in $\CP^{2k+1}$. Therefore each marked-point incidence condition inserts the
+hyperplane class $H\in H^2(\CP^{2k+1},\bZ)$. For the three-point function we
+obtain the insertion
+\begin{equation}
+  \left(\int_C\omega_a\right)\left(\int_C\omega_b\right)\left(\int_C\omega_c\right)H^3
+\end{equation}
+on $\overline{\mathcal{M}}_k(C)\simeq\CP^{2k+1}$.
+
+Combining with the obstruction insertion gives the universal projective-space
+integral
+\begin{equation}
+  \int_{\CP^{2k+1}} H^3\,H^{2k-2}
+  =\int_{\CP^{2k+1}} H^{2k+1}
+  =1.
+\end{equation}
+All curve-dependent information is carried only by the classical intersection
+numbers $\int_C \omega_a$ and the instanton weight $q^{k[C]}$.
+
+\subsection{Yukawa series and the prepotential}
+Let $\beta_0=[C]$ be a primitive isolated curve class and write
+\begin{equation}
+  d_a := \int_{\beta_0}\omega_a.
+\end{equation}
+For maps that are degree-$k$ covers of $C$, the instanton action in the class
+$k\beta_0$ is $k\int_C\omega$, so the Polyakov path integral supplies the
+semiclassical weight $q^{k\beta_0}$. The remaining zero-mode integral is the
+universal projective-space intersection computed above, so summing over $k\ge1$
+gives
+\begin{equation}
+  C_{abc}\Big|_{C}
+  = \left(\int_C \omega_a\right)\left(\int_C \omega_b\right)\left(\int_C
+  \omega_c\right)\sum_{k=1}^{\infty} q^{k\beta_0}
+  = d_a d_b d_c\,\frac{q^{\beta_0}}{1-q^{\beta_0}},
+\end{equation}
+up to an overall multiplicity $n_{\beta_0}$ counting such isolated curves in the
+class $\beta_0$.
+
+In a one-parameter situation ($h^{1,1}(X)=1$), choose a generator $\alpha\in
+H^2(X,\bZ)$, set $t:=\int_\alpha \omega$, and let $d:=\int_C\alpha\in\bZ_{>0}$ so
+that $q^{[C]}=e^{-dt}$. Writing $\kappa:=\int_X\alpha^3$, the Yukawa coupling has
+the standard form
+\begin{equation}
+  C_{ttt}(t)
+  = \kappa + \sum_{d\ge1} n_d\, d^3\,\frac{q^d}{1-q^d},
+  \qquad
+  q:=e^{-t}.
+\end{equation}
+
+Finally, the multi-cover sum can be integrated (three times in $t$) to a genus-0
+prepotential. Using $\operatorname{Li}_3(q)=\sum_{k\ge1}q^k/k^3$ one convenient
+primitive is
+\begin{equation}
+  F_0(t)
+  = \frac{\kappa}{6}t^3 - \sum_{d\ge1} n_d\,\operatorname{Li}_3(q^d)
+  +(\text{at most quadratic in }t),
+\end{equation}
+so that the $k$-fold cover contribution appears with the familiar $1/k^3$ weight
+in $F_0$.
+
+\subsection{Dictionary to Aspinwall--Morrison and Distler}
+In the one-parameter case above, Aspinwall--Morrison's $f$-polynomial is (up to
+their normalization conventions) the Yukawa $C_{ttt}$, with their $a_d$ equal to
+our $n_d$ \cite{AspinwallMorrison:1991tft}. Distler's $W'_{mnp}$ is the same
+three-point function for $(1,1)$ operators written with a different index and
+operator normalization \cite{Distler:1992n2}.
 
 \bibliographystyle{JHEP}
 \bibliography{stringrefs}
