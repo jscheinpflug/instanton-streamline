@@ -8,6 +8,9 @@
 \usepackage{draft}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
+\usepackage{tikz-cd}
+
+\newcommand{\wt}{\widetilde}
 
 \begin{document}
 
@@ -44,7 +47,7 @@ admits a semiclassical expansion about classical saddles.
 In Euclidean signature, the bosonic part of the $\sigma$-model action (in
 conformal gauge) is, up to an overall normalization,
 \begin{equation}
-  S_{\mathrm{bos}}\sim \int_\Sigma \|d\phi\|^2 + i\int_\Sigma \phi^*B.
+  S_{\mathrm{bos}}\sim \int_\Sigma \|d\phi\|^2 - i\int_\Sigma \phi^*B.
 \end{equation}
 For a K\"ahler target one can complete the square to obtain the standard bound
 \begin{equation}
@@ -65,14 +68,18 @@ $B$-field term depends only on the homology class via
 $\int_\Sigma \phi^*B=\int_\beta B$, while the kinetic term saturates the bound
 above and contributes the area $\int_\beta J$ in the same normalization. Thus
 the Polyakov path integral in the instanton sector $\beta$ carries the
-characteristic semiclassical factor $\exp(-\int_\beta J-i\int_\beta B)$, which
-we package into the complexified K\"ahler class
+characteristic semiclassical factor $\exp(-\int_\beta J+i\int_\beta B)$. It is
+convenient to encode this dependence in dimensionless complexified K\"ahler
+parameters $t$ (periodic under large gauge transformations of $B$) by writing
 \begin{equation}
-  \omega := J+iB,
-  \qquad
-  q^\beta := \exp\!\left(-\int_\beta \omega\right),
+  q^\beta := \exp\!\left(2\pi i\,\langle t,\beta\rangle\right),
 \end{equation}
-for effective classes $\beta$ with $\int_\beta J>0$.
+where $\langle t,\beta\rangle:=\int_\beta t$, for effective classes $\beta$ with
+$\int_\beta J>0$ (so that $|q^\beta|\ll 1$ at
+large volume). This normalization agrees with the explicit evaluation of the
+classical instanton action in Xi Yin's notes on the resolved conifold, where one
+finds $S_{\mathrm{inst}}=-2\pi i k t$ and hence $e^{-S_{\mathrm{inst}}}=e^{2\pi i
+k t}$ \cite[Eq.~(19.184)]{Yin:FoundationsStringTheory}.
 
 \subsection{Degree-k maps to an isolated rational curve}
 Let $C\simeq\CP^1\subset X$ be a rigid rational curve (so that there are no
@@ -131,7 +138,9 @@ four-fermi curvature interaction (schematically)
 where $\psi_\pm^i,\psi_\pm^{\bar i}$ are the worldsheet fermions valued in
 $\phi^*T^{1,0}X$ and $\phi^*T^{0,1}X$. In an instanton background whose image
 lies in $C$, the additional normal-direction fermion zero modes span
-$H^1(\Sigma,\phi^*N_{C/X})$ (and its complex conjugate). Let
+$H^1(\Sigma,\phi^*N_{C/X})$ (and its complex conjugate), after accounting for
+the universal zero modes already absorbed by the operator insertions (see
+Appendix~\ref{app:zero-mode-measure}). Let
 $M=\overline{\mathcal{M}}_k(C)$ and denote the corresponding Grassmann
 collective coordinates by $\eta^A,\bar\eta^{\bar A}$, $A=1,\dots,r$ with
 $r=2k-2$.
@@ -157,7 +166,10 @@ an $r\times r$ matrix of two-forms on $M$. By the
 Chern--Weil formula this determinant is, up to the conventional factor
 $(2\pi i)^{-r}$, a representative of $c_{\mathrm{top}}(\mathrm{Obs}_k)$. Thus
 integrating out the extra normal-direction fermion zero modes inserts
-$c_{\mathrm{top}}(\mathrm{Obs}_k)$ in the moduli-space integral.
+$c_{\mathrm{top}}(\mathrm{Obs}_k)$ in the moduli-space integral. A more
+pedestrian Polyakov-path-integral sketch of the induced zero-mode measure and
+its Chern--Weil interpretation is given in
+Appendix~\ref{app:zero-mode-measure}.
 
 In the present case one can determine this obstruction bundle directly on
 $\overline{\mathcal{M}}_k(C)\simeq\CP^{2k+1}$ by tracking the normal-direction
@@ -197,10 +209,12 @@ normal directions therefore gives the obstruction bundle as a direct sum of
 $2k-2$ copies of the tautological line bundle $\mathcal{L}:=\mathcal{O}_M(-1)$:
 \begin{equation}
   \mathrm{Obs}_k\simeq \mathcal{L}^{\oplus (2k-2)},
+  \label{eq:obs-k}
 \end{equation}
 so that
 \begin{equation}
   c_{\mathrm{top}}(\mathrm{Obs}_k)=c_1(\mathcal{L})^{2k-2}=H^{2k-2}\in H^{4k-4}(\CP^{2k+1},\bZ),
+  \label{eq:ctop-obs-k}
 \end{equation}
 where $H=-c_1(\mathcal{L})$ is the hyperplane class. This matches the
 bundle-theoretic computation of Aspinwall--Morrison and the worldsheet
@@ -254,7 +268,7 @@ Let $\beta_0=[C]$ be a primitive isolated curve class and write
   d_a := \int_{\beta_0}\omega_a.
 \end{equation}
 For maps that are degree-$k$ covers of $C$, the instanton action in the class
-$k\beta_0$ is $k\int_C\omega$, so the Polyakov path integral supplies the
+$k\beta_0$ is linear in $k$, so the Polyakov path integral supplies the
 semiclassical weight $q^{k\beta_0}$. The remaining zero-mode integral is the
 universal projective-space intersection computed above, so summing over $k\ge1$
 gives
@@ -268,14 +282,15 @@ up to an overall multiplicity $n_{\beta_0}$ counting such isolated curves in the
 class $\beta_0$.
 
 In a one-parameter situation ($h^{1,1}(X)=1$), choose a generator $\alpha\in
-H^2(X,\bZ)$, set $t:=\int_\alpha \omega$, and let $d:=\int_C\alpha\in\bZ_{>0}$ so
-that $q^{[C]}=e^{-dt}$. Writing $\kappa:=\int_X\alpha^3$, the Yukawa coupling has
+H^2(X,\bZ)$, let $d:=\int_C\alpha\in\bZ_{>0}$, and write $q:=e^{2\pi i t}$ so
+that $q^{[C]}=q^d=e^{2\pi i d t}$. Writing $\kappa:=\int_X\alpha^3$, the Yukawa
+coupling has
 the standard form
 \begin{equation}
   C_{ttt}(t)
   = \kappa + \sum_{d\ge1} n_d\, d^3\,\frac{q^d}{1-q^d},
   \qquad
-  q:=e^{-t}.
+  q:=e^{2\pi i t}.
 \end{equation}
 
 Finally, the multi-cover sum can be integrated (three times in $t$) to a genus-0
@@ -283,7 +298,7 @@ prepotential. Using $\operatorname{Li}_3(q)=\sum_{k\ge1}q^k/k^3$ one convenient
 primitive is
 \begin{equation}
   F_0(t)
-  = \frac{\kappa}{6}t^3 - \sum_{d\ge1} n_d\,\operatorname{Li}_3(q^d)
+  = \frac{\kappa}{6}t^3 + \frac{1}{(2\pi i)^3}\sum_{d\ge1} n_d\,\operatorname{Li}_3(q^d)
   +(\text{at most quadratic in }t),
 \end{equation}
 so that the $k$-fold cover contribution appears with the familiar $1/k^3$ weight
@@ -295,6 +310,903 @@ their normalization conventions) the Yukawa $C_{ttt}$, with their $a_d$ equal to
 our $n_d$ \cite{AspinwallMorrison:1991tft}. Distler's $W'_{mnp}$ is the same
 three-point function for $(1,1)$ operators written with a different index and
 operator normalization \cite{Distler:1992n2}.
+
+\section{Summary}
+\label{sec:summary}
+We evaluate the protected genus-zero three-point couplings of marginal $(1,1)$
+operators in the $(2,2)$ non-linear $\sigma$-model on a Calabi--Yau threefold
+$X$, i.e.\ the vector-multiplet Yukawa couplings $C_{abc}(t)$ that satisfy
+$C_{abc}=\partial_a\partial_b\partial_c F_0$.
+
+The protection statement used is: $C_{abc}(t)$ depends holomorphically on the
+complexified K\"ahler parameters and is insensitive to the overall $\sigma$-model
+coupling. Therefore we compute it at large volume by a semiclassical expansion
+of the Polyakov path integral around classical saddles. Completing the square in
+the bosonic action shows that the relevant saddles are holomorphic maps
+$\phi:\Sigma\simeq\CP^1\to X$; anti-holomorphic saddles would contribute to the
+anti-holomorphic dependence and hence do not appear in $C_{abc}(t)$.
+
+We then isolate the contribution from degree-$k$ multiple covers of a rigid
+rational curve $C\simeq\CP^1\subset X$ with normal bundle
+$N_{C/X}\simeq\mathcal{O}_C(-1)\oplus\mathcal{O}_C(-1)$. The compactified moduli
+space of degree-$k$ maps $\CP^1\to C$ is
+\begin{equation*}
+  \overline{\mathcal{M}}_k(C)\simeq\CP^{2k+1},
+\end{equation*}
+parametrized by pairs of degree-$k$ homogeneous polynomials $(A,B)$ modulo
+overall rescaling. On the sphere we fix three marked points using
+$\mathrm{PSL}(2,\bC)$, so the only bosonic zero modes to integrate are the map
+moduli.
+
+The reduction of the worldsheet path integral to an integral over
+$\overline{\mathcal{M}}_k(C)$ is controlled by two cohomology classes on
+$\CP^{2k+1}$:
+\begin{itemize}
+\item Each of the three operator insertions enforces an incidence condition
+  $\phi(p_i)\in D_a$ for a divisor representative $D_a\subset X$ of the
+  corresponding $(1,1)$ class. Restricted to maps with image in $C$, this
+  becomes the condition that $\phi(p_i)\in D_a\cap C$. For fixed $p_i$, the
+  constraint $\phi(p_i)=r\in C$ is linear in the coefficients $(a_i,b_i)$ and
+  hence cuts out a hyperplane in $\CP^{2k+1}$. Thus each insertion contributes
+  the hyperplane class $H=c_1(\mathcal{O}(1))$, together with the target-space
+  factor $\int_C\omega_a$ that counts the points in $D_a\cap C$.
+\item For $k>1$ there are additional normal-direction fermion zero modes. Their
+  fiber over a map $\phi$ is
+  $H^1(\Sigma,\phi^*N_{C/X})\simeq H^1(\CP^1,\mathcal{O}(-k))^{\oplus 2}$, so
+  they form a rank-$(2k-2)$ complex vector bundle $\mathrm{Obs}_k$ over
+  $\overline{\mathcal{M}}_k(C)$. Integrating out these zero modes by expanding
+  the universal curvature four-fermi interaction inserts
+  $c_{\mathrm{top}}(\mathrm{Obs}_k)$ in the moduli-space integral. In our case
+  $\mathrm{Obs}_k\simeq\mathcal{O}(-1)^{\oplus(2k-2)}$, so
+  $c_{\mathrm{top}}(\mathrm{Obs}_k)=H^{2k-2}$.
+\end{itemize}
+Therefore the degree-$k$ multiple-cover contribution reduces to the projective
+space intersection number
+\begin{equation*}
+  \int_{\CP^{2k+1}} H^3\,c_{\mathrm{top}}(\mathrm{Obs}_k)
+  =
+  \int_{\CP^{2k+1}} H^{2k+1}
+  =1,
+\end{equation*}
+and the only dependence on the ambient Calabi--Yau data is through the
+intersection numbers $\int_C\omega_a$ and the instanton weight $q^{k[C]}$.
+
+Concretely, for a primitive isolated curve class $\beta_0=[C]$ and
+$d_a:=\int_{\beta_0}\omega_a$, the multiple-cover contribution to the Yukawa is
+\begin{equation*}
+  C_{abc}\Big|_{C}
+  = n_{\beta_0}\,d_a d_b d_c\,\sum_{k\ge 1} q^{k\beta_0}
+  = n_{\beta_0}\,d_a d_b d_c\,\frac{q^{\beta_0}}{1-q^{\beta_0}},
+\end{equation*}
+and integrating $C_{abc}=\partial_a\partial_b\partial_c F_0$ yields a
+trilogarithm multi-cover sum in the prepotential.
+
+Summing the degree-$k$ contributions yields a geometric series for the Yukawa
+coupling. The familiar $1/k^3$ factor does not appear at the level of $C_{abc}$
+but arises only after integrating $C_{abc}=\partial_a\partial_b\partial_c F_0$
+to the prepotential, where the multi-cover sum becomes a trilogarithm.
+
+Appendix~\ref{app:pedestrian-obstruction} gives a step-by-step geometric
+derivation of $\mathrm{Obs}_k$ and $c_{\mathrm{top}}(\mathrm{Obs}_k)$ on
+$\CP^{2k+1}$. Appendix~\ref{app:zero-mode-measure} makes the moduli dependence
+of the induced zero-mode measure explicit directly in Polyakov-path-integral
+terms (including a coordinate Jacobian to evaluation variables and the
+Chern--Weil representative of $c_{\mathrm{top}}(\mathrm{Obs}_k)$). In
+Appendix~\ref{app:uv-measure} we set NSR conventions following
+\cite{Yin:FoundationsStringTheory} and begin an explicit UV-regularized derivation
+of the functional measure (fixing the overall normalization by a fully explicit
+$k=1$ computation, and indicating the general-$k$ structure).
+
+\appendix
+\section{A pedestrian derivation of the obstruction bundle}
+\label{app:pedestrian-obstruction}
+
+This appendix unpacks the geometric computation leading to
+\eqref{eq:obs-k}--\eqref{eq:ctop-obs-k}. The only inputs are: (i) degree-$k$
+maps $\CP^1\to\CP^1$ are parametrized by a projective space; (ii) the
+cohomology of $\mathcal{O}(n)$ on $\CP^1$; (iii) the standard exact sequence
+for a divisor; and (iv) K\"unneth on $\CP^1\times\CP^1$.
+
+\subsection{Minimal prerequisites}
+\paragraph{Projective space and the line bundles $\mathcal{O}(\pm1)$.}
+Let $V\simeq\bC^{N+1}$ and $M:=\CP^N=\mathbb{P}(V)$ be the space of complex
+lines in $V$. The \emph{tautological line bundle} $\mathcal{O}_M(-1)$ is the
+subbundle of the trivial bundle $M\times V$ whose fiber over a point
+$[v]\in\mathbb{P}(V)$ is exactly the corresponding line $\bC\cdot v\subset V$.
+Its dual is denoted $\mathcal{O}_M(1):=\mathcal{O}_M(-1)^\vee$. A nonzero
+linear functional $\ell\in V^\vee$ defines a hyperplane $\{\ell(v)=0\}\subset M$,
+and such hyperplanes are precisely the divisors of sections of $\mathcal{O}_M(1)$.
+We write
+\begin{equation*}
+  H := c_1(\mathcal{O}_M(1)) = -c_1(\mathcal{O}_M(-1))
+\end{equation*}
+for the hyperplane class.
+
+\paragraph{Line bundles on $\CP^1$.}
+On $\CP^1$ there is a unique holomorphic line bundle $\mathcal{O}(n)$ of each
+integer degree $n$. One convenient normalization is that $\mathcal{O}(1)$ has
+two global sections (the linear polynomials), and $\mathcal{O}(n)$ has degree
+$n$. The basic cohomology facts we need are
+\begin{equation*}
+  \dim_\bC H^0(\CP^1,\mathcal{O}(n))=
+  \begin{cases}
+    n+1, & n\ge 0,\\
+    0, & n<0,
+  \end{cases}
+  \qquad
+  \dim_\bC H^1(\CP^1,\mathcal{O}(n))=
+  \begin{cases}
+    0, & n\ge -1,\\
+    -n-1, & n\le -2.
+  \end{cases}
+\end{equation*}
+In particular, $H^*(\CP^1,\mathcal{O}(-1))=0$ and $\dim_\bC H^1(\CP^1,\mathcal{O}(-k))=k-1$
+for $k\ge1$. (One quick proof is Serre duality:
+$H^1(\mathcal{O}(-k))\simeq H^0(\mathcal{O}(k-2))^\vee$.)
+
+\paragraph{Pushforwards and K\"unneth in the product situation.}
+If $\pi:M\times F\to M$ is projection and $\mathcal{F}$ is a bundle pulled back
+from $F$, then $R^i\pi_*\mathcal{F}$ is the trivial bundle on $M$ with fiber
+$H^i(F,\mathcal{F}|_F)$. If $L$ is a line bundle on $M$, the projection formula
+reads
+\begin{equation*}
+  R^i\pi_*(\pi^*L\otimes\mathcal{F})\simeq L\otimes R^i\pi_*\mathcal{F}.
+\end{equation*}
+For products of curves we will use K\"unneth in the simple form
+\begin{equation*}
+  H^2(\Sigma\times C,\mathcal{A}\boxtimes\mathcal{B})
+  \simeq H^1(\Sigma,\mathcal{A})\otimes H^1(C,\mathcal{B}),
+\end{equation*}
+where $\mathcal{A}\boxtimes\mathcal{B}:=\mathrm{pr}_\Sigma^*\mathcal{A}\otimes \mathrm{pr}_C^*\mathcal{B}$,
+since $H^2$ of a curve vanishes.
+
+\subsection{The parameter space of degree-k maps}
+Let $\Sigma\simeq\CP^1$ with homogeneous coordinates $[x:y]$ and
+$C\simeq\CP^1$ with homogeneous coordinates $[s:t]$. A holomorphic map of
+degree $k\ge 1$ is given by a pair of degree-$k$ homogeneous polynomials
+\begin{equation*}
+  [x:y]\longmapsto [A(x,y):B(x,y)],
+  \qquad
+  A=\sum_{i=0}^k a_i x^i y^{k-i},\quad
+  B=\sum_{i=0}^k b_i x^i y^{k-i},
+\end{equation*}
+not both zero, modulo overall rescaling $(A,B)\sim\lambda(A,B)$. The space of
+coefficients $(a_i,b_i)$ is a vector space of dimension $2k+2$, so the space of
+lines in it is
+\begin{equation*}
+  M\simeq\CP^{2k+1}.
+\end{equation*}
+The tautological line bundle on $M$ will be denoted $\mathcal{L}:=\mathcal{O}_M(-1)$.
+
+\subsection{The universal graph and its divisor line bundle}
+Define
+\begin{equation*}
+  Z := M\times \Sigma\times C
+\end{equation*}
+with projections $\pi:Z\to M$, $p:Z\to\Sigma$, and $\rho:Z\to C$:
+\begin{center}
+  \begin{tikzcd}
+    & Z=M\times\Sigma\times C \arrow[dl,"p"'] \arrow[d,"\pi"] \arrow[dr,"\rho"] & \\
+    \Sigma & M & C
+  \end{tikzcd}
+\end{center}
+Inside $Z$ define the \emph{universal graph} $\Gamma\subset Z$ by the single
+equation
+\begin{equation*}
+  A(x,y)\,t - B(x,y)\,s = 0.
+\end{equation*}
+For a fixed point $[A,B]\in M$, the fiber $Z_{[A,B]}\simeq\Sigma\times C$ is a
+copy of $\Sigma\times C$, and $\Gamma\cap Z_{[A,B]}$ is exactly the graph of
+the map $\phi_{[A,B]}:\Sigma\to C$ represented by $[A,B]$.
+\begin{center}
+  \begin{tikzcd}
+    \Gamma \arrow[r,hook,"i"] \arrow[dr,"\pi_\Gamma"'] & Z \arrow[d,"\pi"] \\
+    & M
+  \end{tikzcd}
+\end{center}
+
+The defining equation is homogeneous of degree $1$ in the coefficients
+$(a_i,b_i)$, degree $k$ in $(x,y)$, and degree $1$ in $(s,t)$. Equivalently, it
+is a global section of the line bundle
+\begin{equation*}
+  \pi^*\mathcal{O}_M(1)\otimes p^*\mathcal{O}_\Sigma(k)\otimes \rho^*\mathcal{O}_C(1).
+\end{equation*}
+The zero locus of that section is $\Gamma$, so the associated divisor line
+bundle is
+\begin{equation*}
+  \mathcal{O}_Z(\Gamma)\simeq \pi^*\mathcal{O}_M(1)\otimes p^*\mathcal{O}_\Sigma(k)\otimes \rho^*\mathcal{O}_C(1).
+\end{equation*}
+
+\subsection{Computing \texorpdfstring{$\mathrm{Obs}_k$}{Obs\_k}}
+In the main text we restrict to maps whose image lies in a rigid rational curve
+$C\subset X$ with normal bundle $N_{C/X}\simeq\mathcal{O}_C(-1)\oplus\mathcal{O}_C(-1)$.
+For a degree-$k$ cover $\phi:\Sigma\to C$ one has
+\begin{equation*}
+  \phi^*\mathcal{O}_C(-1)\simeq \mathcal{O}_\Sigma(-k),
+  \qquad
+  \dim_\bC H^1(\Sigma,\mathcal{O}_\Sigma(-k))=k-1.
+\end{equation*}
+So for one normal direction the obstruction (or normal-direction fermion
+zero-mode) space is $H^1(\Sigma,\phi^*\mathcal{O}_C(-1))$, and for the two
+normal directions it has rank $2(k-1)=2k-2$.
+
+To package these fibers over $M$, define the line bundle $E:=\rho^*\mathcal{O}_C(-1)$ on $Z$.
+Restricting $E$ to the graph of a map gives
+\begin{equation*}
+  E|_{\Gamma_{[A,B]}}\simeq \phi_{[A,B]}^*\mathcal{O}_C(-1)\simeq\mathcal{O}_\Sigma(-k),
+\end{equation*}
+so a natural definition for the rank-$(k-1)$ bundle of zero modes in one normal
+direction is
+\begin{equation*}
+  \mathrm{Obs}^{(1)}_k := R^1\pi_*(E|_\Gamma).
+\end{equation*}
+
+Now use the standard exact sequence for a divisor:
+\begin{equation*}
+  0\to E(-\Gamma)\to E\to E|_\Gamma\to 0,
+  \qquad
+  E(-\Gamma):=E\otimes\mathcal{O}_Z(-\Gamma).
+\end{equation*}
+Pushing forward by $\pi$ gives a long exact sequence in the higher direct
+images. The key simplification is that $R^i\pi_*E=0$ for all $i$, because on a
+fiber $\Sigma\times C$ we have
+\begin{equation*}
+  H^*(\Sigma\times C, E|_{\Sigma\times C})
+  = H^*(\Sigma,\mathcal{O}_\Sigma)\otimes H^*(C,\mathcal{O}_C(-1))
+  = 0.
+\end{equation*}
+Therefore the connecting morphism in the long exact sequence is an isomorphism
+\begin{equation*}
+  R^1\pi_*(E|_\Gamma)\simeq R^2\pi_*(E(-\Gamma)).
+\end{equation*}
+
+Next compute $E(-\Gamma)$. Since $\mathcal{O}_Z(-\Gamma)\simeq\mathcal{O}_Z(\Gamma)^\vee$,
+the expression for $\mathcal{O}_Z(\Gamma)$ above gives
+\begin{equation*}
+  E(-\Gamma)\simeq
+  \pi^*\mathcal{O}_M(-1)\otimes p^*\mathcal{O}_\Sigma(-k)\otimes \rho^*\mathcal{O}_C(-2).
+\end{equation*}
+Applying the projection formula to factor out $\mathcal{O}_M(-1)$, we reduce to
+the cohomology of the $\Sigma\times C$ fiber:
+\begin{equation*}
+  R^2\pi_*(E(-\Gamma))
+  \simeq
+  \mathcal{O}_M(-1)\otimes R^2\pi_*\!\left(p^*\mathcal{O}_\Sigma(-k)\otimes \rho^*\mathcal{O}_C(-2)\right).
+\end{equation*}
+But the bundle in parentheses is pulled back from $\Sigma\times C$, so
+$R^2\pi_*$ is the trivial bundle with fiber
+$H^2(\Sigma\times C,\mathcal{O}_\Sigma(-k)\boxtimes\mathcal{O}_C(-2))$. By K\"unneth,
+\begin{equation*}
+  H^2(\Sigma\times C,\mathcal{O}_\Sigma(-k)\boxtimes\mathcal{O}_C(-2))
+  \simeq
+  H^1(\Sigma,\mathcal{O}_\Sigma(-k))\otimes H^1(C,\mathcal{O}_C(-2)),
+\end{equation*}
+which has complex dimension $(k-1)\cdot 1=k-1$. Hence
+\begin{equation*}
+  R^2\pi_*(E(-\Gamma))\simeq \mathcal{O}_M(-1)^{\oplus(k-1)}.
+\end{equation*}
+Combining the steps,
+\begin{equation*}
+  \mathrm{Obs}^{(1)}_k = R^1\pi_*(E|_\Gamma)\simeq \mathcal{O}_M(-1)^{\oplus(k-1)}.
+\end{equation*}
+Finally, $N_{C/X}$ has two copies of $\mathcal{O}_C(-1)$, so we take two copies
+of $\mathrm{Obs}^{(1)}_k$:
+\begin{equation*}
+  \mathrm{Obs}_k \simeq \mathcal{O}_M(-1)^{\oplus(2k-2)}=\mathcal{L}^{\oplus(2k-2)},
+\end{equation*}
+which is \eqref{eq:obs-k}.
+
+\subsection{Computing the top Chern class}
+For a direct sum, total Chern classes multiply: $c(E\oplus F)=c(E)\,c(F)$. For a
+line bundle $\mathcal{L}$ this means
+\begin{equation*}
+  c(\mathcal{L}^{\oplus r})=(1+c_1(\mathcal{L}))^r,
+  \qquad
+  c_{\mathrm{top}}(\mathcal{L}^{\oplus r})=c_1(\mathcal{L})^r.
+\end{equation*}
+Applying this to $\mathrm{Obs}_k\simeq\mathcal{L}^{\oplus(2k-2)}$ gives
+\begin{equation*}
+  c_{\mathrm{top}}(\mathrm{Obs}_k)=c_1(\mathcal{L})^{2k-2}=(-H)^{2k-2}=H^{2k-2},
+\end{equation*}
+where $H=c_1(\mathcal{O}_M(1))=-c_1(\mathcal{L})$ is the hyperplane class and
+the sign drops out because $2k-2$ is even. This is \eqref{eq:ctop-obs-k}. As a
+sanity check, for $k=1$ the rank is zero and $c_{\mathrm{top}}(\mathrm{Obs}_1)=1$.
+
+\section{Zero-mode measures in the Polyakov path integral}
+\label{app:zero-mode-measure}
+
+In the main text we used the standard statement that the worldsheet path
+integral in an instanton sector reduces to an integral over the instanton
+moduli space, with the extra normal-direction fermion zero modes absorbed by
+the four-fermi curvature interaction and producing
+$c_{\mathrm{top}}(\mathrm{Obs}_k)$. One can in principle derive the precise
+functional measure starting from a UV-regularized Hamiltonian path integral and
+performing the change of variables to collective coordinates, but doing this
+directly is a lengthy exercise (as emphasized in Xi Yin's notes
+\cite[Sec.~19.5.4, around Eq.~(19.194)]{Yin:FoundationsStringTheory}).
+Appendix~\ref{app:uv-measure} begins this UV-regularized derivation (fixing
+conventions and calibrating the overall normalization by an explicit $k=1$
+computation). In the present appendix we focus instead on the
+\emph{moduli dependence} of the induced zero-mode measure, which is controlled
+by the $L^2$ inner products on bosonic and fermionic zero modes coming from the
+quadratic kinetic terms and by the Chern--Weil form induced by the universal
+four-fermi curvature interaction.
+
+\subsection{Collective coordinates and the bosonic zero-mode Jacobian}
+Let $\phi_0(z,\bar z;m)$ be a smooth family of classical saddles (holomorphic
+maps) parametrized by local complex coordinates $m^a$ on the instanton moduli
+space $M$. The tangent vectors to this family are the bosonic zero modes
+\begin{equation*}
+  \delta_a\phi^i := \frac{\partial \phi_0^i}{\partial m^a},
+  \qquad
+  \delta_{\bar a}\phi^{\bar i} := \frac{\partial \phi_0^{\bar i}}{\partial \bar m^{\bar a}}.
+\end{equation*}
+Expand a general field configuration near the saddle as
+\begin{equation*}
+  \phi^i=\phi_0^i(m)+\delta m^a\,\delta_a\phi^i+\delta\phi_\perp^i,
+\end{equation*}
+where $\delta\phi_\perp$ is orthogonal to the zero modes with respect to the
+$L^2$ inner product induced by the quadratic kinetic term. In particular, one
+introduces the induced Hermitian metric on $M$,
+\begin{equation*}
+  G_{a\bar b}(m):=\int_\Sigma d^2z\,
+  g_{i\bar j}(\phi_0)\,\delta_a\phi^i\,\delta_{\bar b}\phi^{\bar j}.
+\end{equation*}
+Changing variables from the zero-mode coefficients to the collective
+coordinates $m^a$ then produces a Jacobian $\det(G_{a\bar b})$ in the bosonic
+measure. Schematically,
+\begin{equation*}
+  [D\phi]\;=\;\det(G_{a\bar b})\;\prod_a d^2 m^a\; [D\delta\phi_\perp],
+\end{equation*}
+up to an overall (regularization-dependent) constant and the usual factors from
+gauge fixing the worldsheet conformal symmetry. For the genus-zero three-point
+function we fix three marked points on $\Sigma$ using $\mathrm{PSL}(2,\bC)$, so
+only the map moduli remain to be integrated.
+
+In the multiple-cover problem at hand, $M\simeq\CP^{2k+1}$ is the
+projectivization of the vector space of pairs of degree-$k$ polynomials
+\begin{equation*}
+  A(x,y)=\sum_{i=0}^k a_i x^i y^{k-i},\qquad
+  B(x,y)=\sum_{i=0}^k b_i x^i y^{k-i},
+\end{equation*}
+with homogeneous coordinates
+\begin{equation*}
+  Z^I := (a_0,\dots,a_k,b_0,\dots,b_k)\in \bC^{2k+2}\setminus\{0\},
+  \qquad
+  [Z]\in \CP^{2k+1}.
+\end{equation*}
+One can connect this coordinate description more directly to the worldsheet by
+noting that $A$ and $B$ are sections of $\mathcal{O}_\Sigma(k)$. Fix a reference
+metric on $\Sigma\simeq\CP^1$ (e.g.\ the round/Fubini--Study metric) and the
+standard Hermitian metric on $\mathcal{O}_\Sigma(k)$. This induces an $L^2$
+inner product on $H^0(\Sigma,\mathcal{O}(k))$. In the affine chart $z=x/y$ a
+convenient normalization is
+\begin{equation*}
+  \langle s,s'\rangle
+  := \int_{\CP^1}\frac{i\,dz\wedge d\bar z}{2\pi}\,
+  \frac{\overline{s(z)}\,s'(z)}{(1+|z|^2)^{k+2}},
+\end{equation*}
+under which the monomials are orthogonal with
+\begin{equation*}
+  \langle z^i,z^i\rangle=\frac{i!\,(k-i)!}{(k+1)!}\qquad (0\le i\le k).
+\end{equation*}
+Expanding $A$ and $B$ in an orthonormal basis of $H^0(\Sigma,\mathcal{O}(k))$
+therefore identifies the coefficients $(a_i,b_i)$ as coordinates on a flat
+vector space $\bC^{2k+2}$ with the standard Lebesgue measure
+$\prod_i d^2a_i\,d^2b_i$, modulo the overall rescaling
+$(A,B)\sim\lambda(A,B)$ that produces $M=\mathbb{P}(\bC^{2k+2})$.
+An explicit and convenient choice of differential-form ``measure'' on $M$ is
+given by the Fubini--Study K\"ahler form
+\begin{equation*}
+  \omega_{\mathrm{FS}}:= i\,\partial\bar\partial \log(Z^\dagger Z),
+\end{equation*}
+whose volume form is $\omega_{\mathrm{FS}}^{2k+1}/(2k+1)!$ and which is
+normalized by
+\begin{equation*}
+  \int_{\CP^{2k+1}} \left(\frac{\omega_{\mathrm{FS}}}{2\pi}\right)^{2k+1}=1.
+\end{equation*}
+In the affine chart $Z^0\neq 0$ with local coordinates $w^\alpha:=Z^\alpha/Z^0$
+($\alpha=1,\dots,2k+1$), one has $\omega_{\mathrm{FS}}= i\,\partial\bar\partial
+\log(1+\sum_\alpha |w^\alpha|^2)$ and the normalized top form is
+\begin{equation*}
+  \left(\frac{\omega_{\mathrm{FS}}}{2\pi}\right)^{2k+1}
+  =
+  \frac{(2k+1)!}{\pi^{2k+1}}\,
+  \frac{\prod_{\alpha=1}^{2k+1} d^2 w^\alpha}{\left(1+\sum_{\alpha=1}^{2k+1}|w^\alpha|^2\right)^{2k+2}}.
+\end{equation*}
+Equivalently, one may represent the $\CP^{2k+1}$ integral as an integral over
+the unit sphere $S^{4k+3}\subset\bC^{2k+2}$ modulo the phase rotation
+$Z\mapsto e^{i\alpha}Z$.
+
+\subsection{Fermion zero modes as a bundle over moduli space}
+Similarly, let $\chi_A(z,\bar z;m)$, $A=1,\dots,r$, be a local basis of the
+relevant fermion zero modes (in our application, the unpaired normal-direction
+zero modes after accounting for those already absorbed by the operator
+insertions). Expanding the fermions along these zero modes gives
+\begin{equation*}
+  \psi_{(0)}=\eta^A\,\chi_A,\qquad \bar\psi_{(0)}=\bar\eta^{\bar A}\,\bar\chi_{\bar A},
+\end{equation*}
+and the kinetic term induces an $L^2$ inner product
+\begin{equation*}
+  h_{A\bar B}(m):=\int_\Sigma d^2z\, g_{i\bar j}(\phi_0)\,\chi_A^i\,\bar\chi_{\bar B}^{\bar j}.
+\end{equation*}
+As $m$ varies, the span of the zero modes defines a rank-$r$ complex vector
+bundle over $M$ (the obstruction bundle $\mathrm{Obs}_k$ in our case). Choosing
+an orthonormal frame for this bundle makes the Berezin measure simply
+$\prod_A d\eta^A d\bar\eta^{\bar A}$ locally, but the $m$-dependence of the
+frame defines a natural connection. Concretely, in an orthonormal frame the
+connection one-form is the familiar Berry connection
+\begin{equation*}
+  (A_a)^{\bar A}{}_B := \int_\Sigma d^2z\, g_{i\bar j}(\phi_0)\,
+  \bar\chi_{\bar A}^{\bar j}\,\nabla_a \chi_B^i,
+\end{equation*}
+obtained by differentiating the zero-mode basis along $M$ and projecting back
+onto the zero-mode subspace; its curvature two-form is $F=dA+A\wedge A$.
+
+\subsection{Four-fermi term and the top Chern class}
+The $(2,2)$ $\sigma$-model action contains the universal curvature four-fermi
+interaction
+\begin{equation*}
+  S_{4f}\sim \int_\Sigma R_{i\bar jk\bar l}(\phi)\,
+  \psi_{+}^{i}\psi_{+}^{\bar j}\psi_{-}^{k}\psi_{-}^{\bar l}.
+\end{equation*}
+Projecting this term onto the fermion zero modes yields an effective coupling
+on $M$ in which the curvature $F$ of the zero-mode bundle appears. After
+including the fermion zero modes $\theta^a,\bar\theta^{\bar b}$ paired by
+supersymmetry with the bosonic moduli $m^a,\bar m^{\bar b}$, one finds the
+zero-mode effective action of the form used in the main text,
+\begin{equation*}
+  S_{4f}^{(0)}=\bar\eta_{\bar A}\,(F_{a\bar b})^{\bar A}{}_B\,\eta^B\;\theta^a\bar\theta^{\bar b}.
+\end{equation*}
+The path integral over the $r$ complex obstruction zero modes is then a
+finite-dimensional Gaussian Berezin integral,
+\begin{equation*}
+  \int \prod_{A=1}^r d\eta^A d\bar\eta^{\bar A}\,
+  \exp\!\left(-\bar\eta_{\bar A}F^{\bar A}{}_B\eta^B\right)
+  = \det(F),
+\end{equation*}
+where $F^{\bar A}{}_B$ is viewed as an $r\times r$ matrix of two-forms on $M$.
+Expanding the determinant makes it manifest that it is a degree-$2r$ differential
+form on $M$,
+\begin{equation*}
+  \det(F)=\frac{1}{r!}\,\epsilon_{\bar A_1\cdots \bar A_r}\epsilon^{B_1\cdots B_r}
+  F^{\bar A_1}{}_{B_1}\wedge\cdots\wedge F^{\bar A_r}{}_{B_r}.
+\end{equation*}
+By the Chern--Weil theorem this form represents (up to the conventional factor
+$(2\pi i)^r$) the top Chern class $c_{\mathrm{top}}(\mathrm{Obs}_k)$. This is
+the precise sense in which integrating out the extra fermion zero modes inserts
+$c_{\mathrm{top}}(\mathrm{Obs}_k)$ in the moduli-space integral.
+
+For the multiple-cover problem this can be made completely explicit. Since
+$M\simeq\CP^{2k+1}$ and $\mathrm{Obs}_k\simeq\mathcal{L}^{\oplus r}$ with
+$\mathcal{L}=\mathcal{O}_M(-1)$ and $r=2k-2$ by \eqref{eq:obs-k}, it is enough
+to write the curvature of $\mathcal{O}_M(-1)$. Equip $\mathcal{O}_M(-1)$ with
+its standard Hermitian metric induced from the trivial bundle
+$M\times\bC^{2k+2}$. In the local frame $s=Z$ one has $\|s\|^2=Z^\dagger Z$, so
+the Chern curvature is
+\begin{equation*}
+  F_{\mathcal{L}}=-\partial\bar\partial \log(Z^\dagger Z)
+  = - i\,\omega_{\mathrm{FS}}.
+\end{equation*}
+Since $\mathrm{Obs}_k$ is a direct sum of $r$ copies of $\mathcal{L}$, its
+curvature is $F_{\mathrm{Obs}}=F_{\mathcal{L}}\,\mathbf{1}_r$, hence
+\begin{equation*}
+  \det(F_{\mathrm{Obs}}) = (F_{\mathcal{L}})^r = (-i)^r\,\omega_{\mathrm{FS}}^r.
+\end{equation*}
+Therefore the explicit differential-form representative produced by the
+obstruction-fermion Gaussian is
+\begin{equation*}
+  c_{\mathrm{top}}(\mathrm{Obs}_k)
+  = \left(\frac{i}{2\pi}\right)^r \det(F_{\mathrm{Obs}})
+  = \left(\frac{\omega_{\mathrm{FS}}}{2\pi}\right)^r,
+\end{equation*}
+which is the Fubini--Study realization of \eqref{eq:ctop-obs-k}.
+
+Likewise, a marked-point incidence condition is a hyperplane in $M$, hence
+inserts the hyperplane class $H=c_1(\mathcal{O}_M(1))$. In terms of
+$\omega_{\mathrm{FS}}$ one has $H=[\omega_{\mathrm{FS}}/2\pi]$. A concrete
+differential-form representative of $H$ can be written using the
+Poincar\'e--Lelong formula: if $\ell(Z)$ is a nonzero linear functional, then
+\begin{equation*}
+  \frac{i}{2\pi}\,\partial\bar\partial \log|\ell(Z)|^2
+\end{equation*}
+is a closed $(1,1)$ form representing the Poincar\'e dual of the divisor
+$\{\ell(Z)=0\}$, i.e.\ a hyperplane. Thus the three insertions contribute
+$(\omega_{\mathrm{FS}}/2\pi)^3$, and together with the obstruction insertion the
+full moduli-space form is $(\omega_{\mathrm{FS}}/2\pi)^{2k+1}$, whose integral
+over $M\simeq\CP^{2k+1}$ equals $1$ by the normalization above.
+
+\subsection{Normal-sector zero-mode counting on \texorpdfstring{$\CP^1$}{CP1}}
+For $\Sigma\simeq\CP^1$ one has $K^{1/2}\simeq\mathcal{O}(-1)$. If the instanton
+map has degree $k$ and the image curve has normal bundle
+$N_{C/X}\simeq\mathcal{O}_C(-1)\oplus\mathcal{O}_C(-1)$, then for each normal
+direction
+\begin{equation*}
+  K^{1/2}\otimes\phi^*N_{C/X}^\vee \simeq \mathcal{O}_\Sigma(k-1),
+\end{equation*}
+so the corresponding physical worldsheet spinor has $k$ holomorphic zero modes.
+Similarly, the tangent-direction spinor zero modes are sections of
+$K^{1/2}\otimes\phi^*T_C\simeq\mathcal{O}_\Sigma(2k-1)$ and hence come in
+$2k$ copies. Altogether (including both chiralities) there are $8k$ fermion zero
+modes in a degree-$k$ instanton background. In the protected genus-zero
+three-point function, the operator insertions absorb a fixed number of these
+universal modes; for $k>1$ the remaining unpaired modes are precisely the
+rank-$2k-2$ normal-sector modes discussed above, which must be supplied by
+expanding the curvature four-fermi term.
+In the genus-zero three-point function of marginal $(1,1)$ operators, the
+vertex operator insertions absorb two of the normal-sector fermion zero modes
+in each of the left- and right-moving systems, so the remaining unpaired normal
+zero modes have complex dimension $k-1$ per normal direction, i.e.\ rank
+$2k-2$ in total. This matches the deformation-theoretic obstruction space
+\begin{equation*}
+  H^1(\Sigma,\phi^*\mathcal{O}_C(-1))\simeq H^0(\Sigma,\mathcal{O}_\Sigma(k-2))^\vee,
+\end{equation*}
+using Serre duality, and explains why the bundle of unpaired zero modes can be
+identified with $\mathrm{Obs}_k=R^1\pi_*(\phi^*N_{C/X})$ as used in the main text.
+
+\subsection{Warm-up: the degree-one Jacobian in coordinates}
+It is instructive to see a concrete Jacobian in the simplest case $k=1$. Write
+an affine coordinate $z$ on $\Sigma\simeq\CP^1$ and describe a degree-one map by
+\begin{equation*}
+  \nu(z)=\frac{P(z)}{Q(z)},
+  \qquad
+  P(z)=a_0+a_1 z,\qquad Q(z)=b_0+b_1 z,
+\end{equation*}
+with $b_0\neq 0$ fixed as a gauge choice. Denote $\nu_a:=\nu(z_a)$ for three
+fixed marked points $z_a$ and write $z_{ab}:=z_a-z_b$. The resultant is
+$R=a_0b_1-a_1b_0$. A direct differentiation gives the Jacobian identity
+\cite[Eq.~(19.202)]{Yin:FoundationsStringTheory}
+\begin{equation}
+  R\,b_0\, da_0\wedge da_1\wedge db_1
+  =
+  d\nu_1\wedge d\nu_2\wedge d\nu_3\;
+  \frac{(Q(z_1))^2(Q(z_2))^2(Q(z_3))^2}{z_{12}z_{23}z_{31}}.
+  \label{eq:jacobian-k1}
+\end{equation}
+This is the coordinate-level avatar of the fact that three incidence conditions
+at marked points provide three hyperplane insertions on $M\simeq\CP^3$. In a
+supersymmetric instanton computation the remaining factors of $Q(z_a)$ cancel
+against those coming from evaluating the fermion zero-mode wavefunctions (and
+the ghost correlator associated with fixing $\mathrm{PSL}(2,\bC)$), leaving a
+measure that depends only on the target-space data at the points
+$\nu_a\in C$.
+
+\subsection{General degree: an explicit Jacobian in evaluation coordinates}
+For general $k$ one can make the bosonic part of the zero-mode measure entirely
+explicit in coordinates, and see directly the Vandermonde factors that are
+canceled by the ghost and fermion zero-mode correlators
+\cite{AspinwallMorrison:1991tft,Distler:1992n2}.
+
+Write a degree-$k$ map in an affine coordinate $z$ on $\Sigma\simeq\CP^1$ as
+\begin{equation*}
+  \nu(z)=\frac{P(z)}{Q(z)},\qquad
+  P(z)=\sum_{j=0}^k a_j z^j,\qquad
+  Q(z)=\sum_{j=0}^k b_j z^j,
+\end{equation*}
+and work in the gauge $b_0\neq 0$ with $b_0$ fixed. Fix three distinct marked
+points $z_a$ ($a=1,2,3$) on $\Sigma$ to gauge-fix $\mathrm{PSL}(2,\bC)$, and let
+$x_i$ ($i=1,\dots,2k-2$) denote auxiliary worldsheet points (in the instanton
+computation these are the integration variables that arise when one expands the
+exponential of the four-fermi term and integrates over the insertion
+positions). Define the evaluation variables
+\begin{equation*}
+  \nu_a:=\nu(z_a),\qquad \mu_i:=\nu(x_i),\qquad
+  z_{ab}:=z_a-z_b,\qquad x_{ij}:=x_i-x_j.
+\end{equation*}
+Let $R(P,Q)$ be the resultant of $P$ and $Q$ (vanishing iff $P$ and $Q$ have a
+common root, i.e.\ the map fails to have degree $k$; see
+\cite[Eq.~(19.186)]{Yin:FoundationsStringTheory}). Then on the open locus
+$R(P,Q)\neq 0$ and away from coincident points one has the holomorphic top-form
+identity \cite[Eq.~(19.207)]{Yin:FoundationsStringTheory}
+\begin{equation}
+  \begin{aligned}
+    R(P,Q)\,b_0\; da_0\wedge\cdots\wedge da_k\wedge db_1\wedge\cdots\wedge db_k
+    &=
+    (-)^{k-1}\; d\nu_1\wedge d\nu_2\wedge d\nu_3\wedge d\mu_1\wedge\cdots\wedge d\mu_{2k-2}\\
+    &\qquad\times
+    \frac{\prod_{a=1}^3 (Q(z_a))^2\;\prod_{i=1}^{2k-2} (Q(x_i))^2}{
+      z_{12}z_{23}z_{31}\;
+      \prod_{1\le i<j\le 2k-2} x_{ij}\;
+      \prod_{i=1}^{2k-2}\prod_{a=1}^3 (z_a-x_i)}.
+  \end{aligned}
+  \label{eq:jacobian-general}
+\end{equation}
+The denominator is the Vandermonde determinant for the $(2k+1)$ points
+$\{\xi_p\}=\{z_a\}\cup\{x_i\}$, written in factored form:
+\begin{equation*}
+  \prod_{1\le p<q\le 2k+1}(\xi_p-\xi_q)
+  =
+  z_{12}z_{23}z_{31}\;
+  \prod_{1\le i<j\le 2k-2} x_{ij}\;
+  \prod_{i=1}^{2k-2}\prod_{a=1}^3 (z_a-x_i).
+\end{equation*}
+One way to derive the identity is to write
+$d\nu(\xi)=\big(Q(\xi)\,dP(\xi)-P(\xi)\,dQ(\xi)\big)/Q(\xi)^2$ at each point
+$\xi\in\{z_a,x_i\}$ and take the wedge product over all $2k+1$ points: the
+determinant of the resulting monomial matrix is the Vandermonde, while the
+overall factor is the resultant $R(P,Q)$.
+
+\subsection{General degree: the explicit zero-mode measure (local form)}
+Combining this Jacobian with the explicit wavefunctions of the fermion zero
+modes gives a fully explicit expression for the moduli dependence of the
+Polyakov-path-integral zero-mode measure in the multiple-cover computation. The
+unpaired normal-sector fermion zero modes form two copies (for the two normal
+directions) of $H^1(\Sigma,\mathcal{O}_\Sigma(-k))\simeq H^0(\Sigma,\mathcal{O}_\Sigma(k-2))^\vee$,
+so choose a basis of polynomials $f_m(z)$ of degree $\le k-2$ and expand the
+corresponding zero-mode wavefunctions as
+\begin{equation*}
+  \lambda^{(s)}(z)=\sum_{m=1}^{k-1}\lambda^{(s,m)}\,\frac{f_m(z)}{Q(z)},
+  \qquad s=1,2,
+\end{equation*}
+and similarly for the right-moving system. The Berezin measure is
+\begin{equation*}
+  \prod_{s=1}^2\prod_{m=1}^{k-1} d\lambda^{(s,m)}\, d\tilde{\lambda}^{(s,m)}.
+\end{equation*}
+Evaluating the zero-mode wavefunctions at the $2k-2$ auxiliary points $x_i$ and
+performing the Berezin integral produces determinants of the evaluation matrices
+$f_m(x_i)/Q(x_i)$, one for each normal direction. For the monomial choice
+$f_m(z)=z^{m-1}$ these determinants are Vandermonde factors, so the cancellation
+against $\prod_{i<j}x_{ij}$ in the Jacobian is completely explicit. A convenient
+way to package the result is that, up to an overall constant,
+\begin{equation}
+  d\mu^{(0)}_{k}
+  \;\propto\;
+  \begin{aligned}[t]
+    &\left|R(P,Q)\,b_0\; da_0\wedge\cdots\wedge da_k\wedge db_1\wedge\cdots\wedge db_k\right|^2\\
+    &\qquad\times
+    \frac{1}{((k-1)!)^2}
+    \left|
+      \det_{1\le m,\ell\le k-1}\frac{f_m(x_\ell)}{Q(x_\ell)}\;
+      \det_{1\le m,\ell\le k-1}\frac{f_m(x_{\ell+k-1})}{Q(x_{\ell+k-1})}
+    \right|^2,
+  \end{aligned}
+\label{eq:zeromode-measure-local}
+\end{equation}
+This matches \cite[Eq.~(19.208)]{Yin:FoundationsStringTheory} (up to overall
+normalization conventions), where the split of the $x_i$ into two groups of size
+$k-1$ corresponds to the
+two normal directions. Using the Jacobian above to trade coefficient variables
+for evaluation variables $(\nu_a,\mu_i)$, the Vandermonde factors in the Jacobian
+cancel against the ghost correlator (from fixing $\mathrm{PSL}(2,\bC)$) and the
+determinants coming from the fermion zero-mode wavefunctions. In this form the
+remaining integration becomes a product of standard Fubini--Study measures on
+$C\simeq\CP^1$, and the final answer reduces to the intersection number computed
+in the main text.
+
+\section{A UV-regularized derivation of the instanton zero-mode measure}
+\label{app:uv-measure}
+
+Appendix~\ref{app:zero-mode-measure} made the \emph{moduli dependence} of the
+instanton zero-mode measure explicit, while leaving its UV normalization
+implicit. Here we begin the missing step: we define the functional measure by a
+UV-regularized Polyakov/NSR path integral and show, in a concrete genus-zero
+example, how the induced measure reduces to the projective-space intersection
+computation of the main text. We follow Xi Yin's conventions, in particular the
+normalization $q=e^{2\pi i t}$ \cite{Yin:FoundationsStringTheory}.
+
+\subsection{NSR conventions and picture choice}
+We consider type II string theory on $\bR^{1,3}\times X$ with $X$ a Calabi--Yau
+threefold and use the NSR formalism. On the sphere we fix three insertion
+points and use unintegrated vertices with explicit $c\wt c$ factors. We
+bosonize the $\beta\gamma$ superghost system in terms of $\phi,\eta,\xi$ so that
+unintegrated NS and R vertices carry holomorphic picture numbers $-1$ and
+$-\tfrac12$ respectively, and similarly for the anti-holomorphic sector.
+
+For the three-point amplitude relevant to the vector-multiplet Yukawa coupling
+one convenient choice is to take two (R,R) vertices in picture
+$(-\tfrac12,-\tfrac12)$ and one (NS,NS) vertex in picture $(-1,-1)$, which
+saturates the required total picture number $(-2,-2)$ on the sphere without
+inserting any picture-changing operator (PCO). If one instead wishes to
+picture-raise an (NS,NS) vertex from $(-1,-1)$ to $(0,0)$, our PCO convention is
+that bringing a holomorphic and anti-holomorphic PCO to the vertex produces the
+standard ``picture-raised'' operator \cite[Eq.~(8.2)]{Yin:FoundationsStringTheory}.
+
+\subsection{From the physical three-point amplitude to an internal correlator}
+In Xi Yin's conifold example, the scalar modulus $t$ is represented by the
+massless (NS,NS) vertex operator
+\begin{equation*}
+  {\cal V}_\phi(k)=c\wt c\,e^{-\phi-\wt\phi}\,{\cal O}_1\,e^{ik\cdot X},
+\end{equation*}
+where ${\cal O}_1$ is an internal weight $(\tfrac12,\tfrac12)$ operator with the
+semi-classical expression \cite[Eq.~(19.176)]{Yin:FoundationsStringTheory}
+\begin{equation*}
+  {\cal O}_1 = -i\,(e_1)_{i\bar j}(Z,\bar Z)\,\psi^i\,\wt\psi^{\bar j}.
+\end{equation*}
+The self-dual gauge boson in the same vector multiplet is represented by a
+massless (R,R) vertex (in picture $(-\tfrac12,-\tfrac12)$) whose internal part
+is the corresponding (R,R) ground operator (we will not need its detailed
+structure). The sphere amplitude with two gauge bosons and one modulus takes
+the form \cite[Sec.~19.5.4]{Yin:FoundationsStringTheory}
+\begin{equation*}
+  \langle {\cal V}_A{\cal V}_A{\cal V}_\phi\rangle
+  = f_{1\A\B}f_2{}^{\A\B}\,C_{111}(t),
+\end{equation*}
+so that $C_{111}(t)$ is fixed by an internal $(2,2)$ NLSM three-point function.
+A convenient representation is \cite[Eq.~(19.180)]{Yin:FoundationsStringTheory}
+\begin{equation}
+  \left\langle {\cal O}_1(z_1,\bar z_1)\,{\cal O}_1(z_2,\bar z_2)\,{\cal O}_1^{(-1,1)}(z_3,\bar z_3)\right\rangle
+  = \frac{C_{111}(t)}{|z_{13}|^2|z_{23}|^2}.
+  \label{eq:yin-ccc-nsns}
+\end{equation}
+The worldsheet-instanton computation is therefore a computation of the NLSM
+path integral with these operator insertions.
+
+\subsection{UV definition of the measure and separation into zero modes}
+We now expand the NLSM path integral around a holomorphic saddle $Z_0$ in a fixed
+degree-$k$ sector. For a rigid $\CP^1\subset X$ with normal bundle
+$\mathcal{O}(-1)\oplus\mathcal{O}(-1)$, the relevant holomorphic maps factor
+through this $\CP^1$. We use the rational-map parametrization and the resultant
+$R(P,Q)$ reviewed in Appendix~\ref{app:zero-mode-measure}; the key change of
+variables from coefficient coordinates to evaluation coordinates is encoded in
+the explicit Jacobians \eqref{eq:jacobian-k1} and \eqref{eq:jacobian-general}.
+
+To define the functional measure unambiguously, we choose a UV regulator by
+expanding the fluctuations in an orthonormal basis of eigenmodes of the kinetic
+operators. Concretely, on the sphere with a fixed reference metric, expand
+\begin{equation*}
+  \delta Z^i = \sum_{n} y^n\,\varphi_n^i,
+  \qquad
+  \delta\psi^i = \sum_{n} \chi^n\,\rho_n^i,
+\end{equation*}
+where $\{\varphi_n\}$ and $\{\rho_n\}$ are orthonormal with respect to the $L^2$
+inner products induced by the quadratic action, and regulate the path integral
+by keeping only modes with eigenvalue $\le \Lambda^2$ (bosons) and $\le \Lambda$
+(fermions). The UV-regularized functional measure is then the product Lebesgue
+measure over the regulated mode coefficients,
+\begin{equation*}
+  [D\delta Z]_\Lambda[D\delta\psi]_\Lambda := \prod_{n\le \Lambda^2} d^2 y^n \prod_{n\le \Lambda} d\chi^n,
+\end{equation*}
+and similarly for the right-movers. Separating the integration variables into
+zero modes and nonzero modes means splitting these orthonormal bases into
+zero-eigenvalue and nonzero-eigenvalue subspaces. This makes the change of
+variables to collective coordinates (instanton moduli) and Grassmann collective
+coordinates (fermion zero modes) entirely canonical.
+
+After splitting into zero and nonzero modes, the instanton contribution takes
+the expected form: an integral over bosonic moduli and fermion zero modes,
+times a regulated determinant from the nonzero modes. The action expanded about
+the saddle contains the classical term $-2\pi i k t$ and the universal curvature
+four-fermi interaction discussed in the main text and Appendix~\ref{app:zero-mode-measure}
+(see also \cite[Eq.~(19.194)]{Yin:FoundationsStringTheory} for an explicit
+normalization).
+
+\subsection{The $k=1$ measure and normalization (fully explicit)}
+We now carry out the $k=1$ computation explicitly, following the logic of the
+UV-regularized measure described above.
+
+Write $\nu(z)=P(z)/Q(z)$ with $P(z)=a_0+a_1 z$, $Q(z)=b_0+b_1 z$, and work on the
+patch $b_0\neq 0$ with the gauge choice $b_0$ fixed. Fix three distinct marked
+points $z_a$ on the worldsheet. The induced bosonic collective coordinates can
+be taken to be the evaluation variables
+\begin{equation*}
+  \nu_a:=\nu(z_a)\qquad (a=1,2,3).
+\end{equation*}
+The change of variables from $(a_0,a_1,b_1)$ to $(\nu_1,\nu_2,\nu_3)$ is governed
+by the Jacobian identity \eqref{eq:jacobian-k1} derived in
+Appendix~\ref{app:zero-mode-measure}.
+
+The remaining step is to relate the UV-defined functional measure to a
+finite-dimensional measure on collective coordinates. This is precisely the
+``laborious exercise'' Xi Yin alludes to: one should start from a Hamiltonian
+definition of the path integral (bosons and fermions), integrate out canonical
+momenta, and then separate the integration variables into zero modes and nonzero
+modes \cite[Eq.~(B.4), Eq.~(B.31)]{Yin:FoundationsStringTheory}.
+
+For instance, for bosonic coordinates with Hamiltonian
+$H(q,p)=\tfrac12 G^{ab}(q)p_a p_b+V(q)$, one step of the time-discretized
+Hamiltonian path integral gives a Gaussian in $p$,
+\begin{equation*}
+  \int \frac{d^D p}{(2\pi)^D}
+  \exp\!\left(i p\cdot (q'-q) - i\Delta t\, \frac12 G^{ab}(q)p_a p_b\right)
+  \propto
+  \sqrt{\det G_{ab}(q)}\;
+  \exp\!\left(\frac{i}{2\Delta t}\,G_{ab}(q)(q'-q)^a(q'-q)^b\right),
+\end{equation*}
+so integrating out the momenta produces the covariant $\sqrt{\det G(q)}$ factor
+in the configuration-space measure \cite[Eq.~(B.4)]{Yin:FoundationsStringTheory}.
+
+For our purposes, the key point is that the UV regulator fixes the measure by
+choosing an orthonormal basis of modes. After splitting into zero and nonzero
+modes, the nonzero-mode integration produces a regulated determinant, while the
+zero-mode part becomes a Jacobian from the change of variables
+\begin{equation*}
+  (\text{mode coefficients})\longleftrightarrow (\text{collective coordinates}).
+\end{equation*}
+This Jacobian can be written explicitly in terms of the $L^2$ Gram matrices of
+the bosonic and fermionic zero-mode wavefunctions.
+
+Concretely, let $m^a$ ($a=1,2,3$) be complex bosonic moduli and write the
+bosonic zero-mode deformation as $\delta Z = \delta m^a\,u_a + \delta\bar m^{\bar a}\,u_{\bar a}$,
+where $u_a$ are a chosen basis of bosonic zero modes (e.g.\ $u_a=\partial_{m^a}Z_0$).
+Choose an orthonormal basis $e_A$ ($A=1,2,3$) of this complex zero-mode space
+with respect to the quadratic-action inner product, so $u_a=e_A\,E^A{}_a$.
+Then the regulated bosonic measure restricted to zero modes transforms as
+\begin{equation*}
+  \prod_{A=1}^3 d^2 y^A
+  =
+  \left|\det E\right|^2 \prod_{a=1}^3 d^2 m^a
+  =
+  \det(g_{a\bar b})\;\prod_{a=1}^3 d^2 m^a,
+\end{equation*}
+where $g_{a\bar b}:=\langle u_a,u_{\bar b}\rangle$ is the $L^2$ Gram matrix.
+
+Similarly, expand the left-moving fermion zero modes in a basis $\rho_a$ and
+the right-movers in a basis $\wt\rho_a$,
+\begin{equation*}
+  \psi_{(0)} = \zeta^a\,\rho_a,\qquad
+  \wt\psi_{(0)} = \wt\zeta^{\bar a}\,\wt\rho_{\bar a}.
+\end{equation*}
+If $\rho_a$ and $\wt\rho_{\bar a}$ are chosen to be the superpartners of the
+bosonic zero modes (as in Xi Yin's discussion of $\zeta$-type modes in
+\cite[\S19.5.4]{Yin:FoundationsStringTheory}), then their $L^2$ Gram matrices are
+again $g_{a\bar b}$. Passing to orthonormal fermion zero-mode bases therefore
+produces the Berezin Jacobians
+\begin{equation*}
+  \prod_{A=1}^3 d\chi^A
+  =
+  \left(\det g_{a\bar b}\right)^{-\frac12}\prod_{a=1}^3 d\zeta^a,
+  \qquad
+  \prod_{A=1}^3 d\wt\chi^A
+  =
+  \left(\det g_{a\bar b}\right)^{-\frac12}\prod_{\bar a=1}^3 d\wt\zeta^{\bar a},
+\end{equation*}
+so the factors of $\det g_{a\bar b}$ cancel between the bosonic and the two
+fermionic chiral systems in the combined zero-mode measure. The resulting
+collective-coordinate measure is thus independent of the choice of
+orthonormalization, and can be written in any convenient coordinate system on
+${\cal M}_1$. In the coefficient patch $b_0\neq 0$ it takes the standard form
+\cite[Eq.~(19.203)]{Yin:FoundationsStringTheory}
+\begin{equation}
+  d^6\nu\, d^3\zeta\, d^3\wt\zeta
+  =
+  \left|R\,b_0\; da_0\,da_1\,db_1\right|^2\;
+  \prod_{n=1}^3 d\zeta^{(n)}\,d\wt\zeta^{(n)}.
+  \label{eq:yin-measure-k1}
+\end{equation}
+
+With these choices, the $k=1$ instanton contribution to \eqref{eq:yin-ccc-nsns}
+reduces to a finite-dimensional integral over ${\cal M}_1$ and the fermion zero
+modes. Performing the Berezin integral over the $\zeta$ zero modes produces the
+determinant of the evaluation matrix at the three marked points, which for the
+monomial basis is the Vandermonde determinant
+\begin{equation*}
+  \det_{1\le a,b\le 3}(z_a^{b-1})=z_{12}z_{23}z_{31}.
+\end{equation*}
+The operator insertions contribute factors of $(e_1)_{\nu\bar\nu}(\nu_a,\bar\nu_a)$
+and the explicit zero-mode wavefunctions contribute $|Q(z_a)|^{-4}$ factors.
+Putting these ingredients together reproduces the explicit integrand written in
+\cite[Eq.~(19.204)]{Yin:FoundationsStringTheory}. Using the Jacobian
+\eqref{eq:jacobian-k1}, the Vandermonde factor cancels the $z_{12}z_{23}z_{31}$
+in the denominator, while the $Q(z_a)$ factors cancel between the Jacobian and
+the zero-mode wavefunctions. The remaining integral is simply
+\begin{equation*}
+  e^{2\pi i t}\int \prod_{a=1}^3 d^2\nu_a\,(-i)\,(e_1)_{\nu\bar\nu}(\nu_a,\bar\nu_a).
+\end{equation*}
+With the standard normalization $\int_{\CP^1} e_1=1$, this evaluates to
+\begin{equation*}
+  e^{2\pi i t}=q,
+\end{equation*}
+so the $k=1$ instanton fixes the overall UV normalization of the protected
+coupling.
+
+\subsection{General $k$: structure and relation to $c_{\mathrm{top}}(\mathrm{Obs}_k)$}
+For $k\ge2$ there are additional normal-direction fermion zero modes. In the
+UV-regularized path integral they are absorbed by pulling down $2k-2$ powers of
+the curvature four-fermi term, producing the
+finite-dimensional Berezin integral that inserts
+$c_{\mathrm{top}}(\mathrm{Obs}_k)$ as in Appendix~\ref{app:zero-mode-measure}.
+On the open locus $R(P,Q)\neq 0$, the change of variables from coefficient
+coordinates to evaluation variables $(\nu_a,\mu_i)$ yields the explicit
+holomorphic top-form identity \eqref{eq:jacobian-general}, and combining it with
+the explicit normal-sector zero-mode wavefunctions gives the local form of the
+zero-mode measure \eqref{eq:zeromode-measure-local}.
+The same Vandermonde cancellations as in the $k=1$ case reduce the remaining
+integral to the projective-space intersection number
+\begin{equation*}
+  \int_{\CP^{2k+1}} H^3\,c_{\mathrm{top}}(\mathrm{Obs}_k)=1,
+\end{equation*}
+and the only $k$-dependence of the instanton contribution to the Yukawa coupling
+is therefore the classical weight $q^k$.
 
 \bibliographystyle{JHEP}
 \bibliography{stringrefs}

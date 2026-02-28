@@ -1,7 +1,0 @@
-interface:
-  display_name: "Physics Paper Harness"
-  short_description: "Enforce TeX self-doc and WL scratch logs"
-  default_prompt: "Use $physics-paper-harness to edit TeX with per-section records and Mathematica scratch notebooks."
-
-policy:
-  allow_implicit_invocation: true
