@@ -116,6 +116,9 @@ We denote this compactified space by
 \begin{equation}
   \overline{\mathcal{M}}_k(C)\simeq \CP^{2k+1}.
 \end{equation}
+This is the Aspinwall--Morrison compactification by allowing common factors (basepoints),
+not the stable-map compactification; it is the natural one for the intersection-number
+computation used here.
 Let $H\in H^2(\CP^{2k+1},\bZ)$ be the hyperplane class.
 
 \subsection{Zero modes and the obstruction class (physics version)}
@@ -398,7 +401,10 @@ path integral in a way that makes the normalization issue completely explicit.
 Combined with Appendix~\ref{app:pedestrian-obstruction} and
 Appendix~\ref{app:zero-mode-measure}, this shows how the UV definition reduces
 to the same projective-space intersection number and how the overall
-normalization is fixed by matching the constant-map sector.
+normalization is fixed by matching the constant-map sector; it also gives an
+explicit UV-regulated one-loop argument that the nonzero-mode determinants
+cancel, so any regulator dependence is absorbed into a single overall
+normalization fixed at $k=0$.
 
 \appendix
 \section{A pedestrian derivation of the obstruction bundle}
@@ -789,12 +795,12 @@ $M\times\bC^{2k+2}$. In the local frame $s=Z$ one has $\|s\|^2=Z^\dagger Z$, so
 the Chern curvature is
 \begin{equation*}
   F_{\mathcal{L}}=-\partial\bar\partial \log(Z^\dagger Z)
-  = - i\,\omega_{\mathrm{FS}}.
+  = + i\,\omega_{\mathrm{FS}}.
 \end{equation*}
 Since $\mathrm{Obs}_k$ is a direct sum of $r$ copies of $\mathcal{L}$, its
 curvature is $F_{\mathrm{Obs}}=F_{\mathcal{L}}\,\mathbf{1}_r$, hence
 \begin{equation*}
-  \det(F_{\mathrm{Obs}}) = (F_{\mathcal{L}})^r = (-i)^r\,\omega_{\mathrm{FS}}^r.
+  \det(F_{\mathrm{Obs}}) = (F_{\mathcal{L}})^r = (i)^r\,\omega_{\mathrm{FS}}^r.
 \end{equation*}
 Therefore the explicit differential-form representative produced by the
 obstruction-fermion Gaussian is
@@ -803,7 +809,8 @@ obstruction-fermion Gaussian is
   = \left(\frac{i}{2\pi}\right)^r \det(F_{\mathrm{Obs}})
   = \left(\frac{\omega_{\mathrm{FS}}}{2\pi}\right)^r,
 \end{equation*}
-which is the Fubini--Study realization of \eqref{eq:ctop-obs-k}.
+which is the Fubini--Study realization of \eqref{eq:ctop-obs-k} (the sign drops
+out because $r=2k-2$ is even).
 
 Likewise, a marked-point incidence condition is a hyperplane in $M$, hence
 inserts the hyperplane class $H=c_1(\mathcal{O}_M(1))$. In terms of
@@ -820,32 +827,29 @@ full moduli-space form is $(\omega_{\mathrm{FS}}/2\pi)^{2k+1}$, whose integral
 over $M\simeq\CP^{2k+1}$ equals $1$ by the normalization above.
 
 \subsection{Normal-sector zero-mode counting on \texorpdfstring{$\CP^1$}{CP1}}
-For $\Sigma\simeq\CP^1$ one has $K^{1/2}\simeq\mathcal{O}(-1)$. If the instanton
-map has degree $k$ and the image curve has normal bundle
-$N_{C/X}\simeq\mathcal{O}_C(-1)\oplus\mathcal{O}_C(-1)$, then for each normal
-direction
+For a degree-$k$ map $\phi:\Sigma\simeq\CP^1\to C\simeq\CP^1$ into a rigid
+$(-1,-1)$ curve one has
 \begin{equation*}
-  K^{1/2}\otimes\phi^*N_{C/X}^\vee \simeq \mathcal{O}_\Sigma(k-1),
+  \phi^*N_{C/X}\simeq \mathcal{O}_\Sigma(-k)\oplus \mathcal{O}_\Sigma(-k).
 \end{equation*}
-so the corresponding physical worldsheet spinor has $k$ holomorphic zero modes.
-Similarly, the tangent-direction spinor zero modes are sections of
-$K^{1/2}\otimes\phi^*T_C\simeq\mathcal{O}_\Sigma(2k-1)$ and hence come in
-$2k$ copies. Altogether (including both chiralities) there are $8k$ fermion zero
-modes in a degree-$k$ instanton background. In the protected genus-zero
-three-point function, the operator insertions absorb a fixed number of these
-universal modes; for $k>1$ the remaining unpaired modes are precisely the
-rank-$2k-2$ normal-sector modes discussed above, which must be supplied by
-expanding the curvature four-fermi term.
-In the genus-zero three-point function of marginal $(1,1)$ operators, the
-vertex operator insertions absorb two of the normal-sector fermion zero modes
-in each of the left- and right-moving systems, so the remaining unpaired normal
-zero modes have complex dimension $k-1$ per normal direction, i.e.\ rank
-$2k-2$ in total. This matches the deformation-theoretic obstruction space
+The normal-sector fermion zero modes that remain unpaired in the genus-zero
+three-point function are naturally identified with the obstruction space
 \begin{equation*}
-  H^1(\Sigma,\phi^*\mathcal{O}_C(-1))\simeq H^0(\Sigma,\mathcal{O}_\Sigma(k-2))^\vee,
+  H^1(\Sigma,\phi^*N_{C/X})
+  \simeq
+  H^1(\CP^1,\mathcal{O}(-k))^{\oplus 2},
+  \qquad
+  \dim_\bC H^1(\CP^1,\mathcal{O}(-k))=k-1,
 \end{equation*}
-using Serre duality, and explains why the bundle of unpaired zero modes can be
-identified with $\mathrm{Obs}_k=R^1\pi_*(\phi^*N_{C/X})$ as used in the main text.
+or, equivalently by Serre duality,
+\begin{equation*}
+  H^1(\CP^1,\mathcal{O}(-k))\simeq H^0(\CP^1,\mathcal{O}(k-2))^\vee.
+\end{equation*}
+As $\phi$ varies over $M\simeq\CP^{2k+1}$ these spaces assemble into the
+rank-$(2k-2)$ bundle $\mathrm{Obs}_k=R^1\pi_*(\phi^*N_{C/X})$ used throughout.
+In the Polyakov path integral these zero modes are absorbed by expanding the
+curvature four-fermi interaction, producing the insertion of
+$c_{\mathrm{top}}(\mathrm{Obs}_k)$ as explained above.
 
 \subsection{Warm-up: the degree-one Jacobian in coordinates}
 It is instructive to see a concrete Jacobian in the simplest case $k=1$. Write
@@ -1191,14 +1195,127 @@ classical weight $e^{-S_{\mathrm{inst}}}=q^k$ in the normalization
 \eqref{eq:uv-q-def} \cite[Eq.~(19.184)]{Yin:FoundationsStringTheory}.
 
 \paragraph{Nonzero modes.}
-Expanding the $(2,2)$ NLSM action around a holomorphic saddle, the nonzero modes
-enter quadratically at one loop. On the complement of the collective-coordinate
-zero modes, the quadratic bosonic operator is (up to a conventional factor of
-two) the square of the fermion kinetic operator, so the bosonic and fermionic
-determinants cancel mode-by-mode; any remaining factor is background
-independent and is already fixed by the $k=0$ convention
-\eqref{eq:uv-k0-result}. Thus the moduli dependence of the instanton sector is
-entirely governed by the zero modes.
+The subtle point in a direct Polyakov/NSR derivation is the dependence of the
+one-loop functional determinants on the saddle and on the UV regulator. Here we
+make the cancellation explicit in a UV scheme compatible with the Hamiltonian
+definition discussed above.
+
+For a K\"ahler target with vanishing $H$-flux, the internal Euclidean $(2,2)$
+NLSM action in complex coordinates is \cite[Ch.~9, Eq.~(9.12)]{Yin:FoundationsStringTheory}
+\begin{equation}
+  \begin{aligned}
+    S
+    &=
+    \frac{1}{2\pi \A'}\int_\Sigma d^2z\,\sqrt{\gamma}\,
+    g_{i\bar j}(Z,\bar Z)\,
+    \Bigl(\partial Z^i\,\bar\partial \bar Z^{\bar j}+\partial \bar Z^{\bar j}\,\bar\partial Z^i\Bigr)
+    +\frac{1}{2\pi}\int_\Sigma d^2z\,\sqrt{\gamma}\,
+    g_{i\bar j}(Z,\bar Z)\,\Bigl(\psi^{\bar j}\nabla_{\bar z}\psi^i+\wt\psi^{\bar j}\nabla_{z}\wt\psi^i\Bigr)\\
+    &\qquad
+    +\frac{\A'}{4\pi}\int_\Sigma d^2z\,\sqrt{\gamma}\,
+    R_{i\bar jk\bar\ell}(Z,\bar Z)\,\psi^i\psi^{\bar j}\wt\psi^k\wt\psi^{\bar\ell},
+  \end{aligned}
+  \label{eq:uv-nlsm-action-complex}
+\end{equation}
+where $\nabla$ is the pullback of the Levi--Civita connection (e.g.
+$\nabla_{\bar z}\psi^i=\bar\partial\psi^i+\Gamma^i_{jk}(Z)\,\bar\partial Z^j\,\psi^k$,
+and similarly for $\nabla_z\wt\psi^i$). Expand around a purely bosonic saddle
+$Z_0$ (instanton or constant map) and set the background fermions to zero. To
+quadratic order in the nonzero fluctuations, the curvature four-fermi term does
+not contribute, and the gauge-fixed action is Gaussian:
+\begin{equation}
+  S^{(2)}_{\mathrm{nzm}}
+  =
+  \langle \delta Z,\,\mathcal{O}_{B}\,\delta Z\rangle
+  + \langle \delta\psi,\,\mathcal{O}_{F,L}\,\delta\psi\rangle
+  + \langle \delta\wt\psi,\,\mathcal{O}_{F,R}\,\delta\wt\psi\rangle.
+  \label{eq:uv-nzm-quadratic}
+\end{equation}
+For a holomorphic saddle $\bar\partial Z_0=0$ the bosonic quadratic form may be
+written in terms of the same covariant derivative that appears in the fermion
+kinetic term:
+\begin{equation}
+  \mathcal{O}_{B}=2\,\nabla_{\bar z}^\dagger\nabla_{\bar z},
+  \qquad
+  \mathcal{O}_{F,L}=\nabla_{\bar z},
+  \qquad
+  \mathcal{O}_{F,R}=\nabla_{z},
+  \label{eq:uv-nzm-operators}
+\end{equation}
+where $\nabla_{\bar z}^\dagger$ is the adjoint with respect to the $L^2$ inner
+products induced by $g_{i\bar j}(Z_0,\bar Z_0)$ and $\gamma$.
+Equivalently, the eigenvalues of $\mathcal{O}_B$ are twice the squared singular
+values of $\nabla_{\bar z}$ on the nonzero-mode subspace.
+
+Now choose a Hamiltonian UV regulator (time slicing in $\tau$, and if desired a
+discretization in $\sigma$) and integrate out the bosonic momenta as in
+\eqref{eq:nlsm-integrate-out-momenta}, with the coherent-state Grassmann measure
+\eqref{eq:uv-fermion-timeslice}. The nonzero-mode functional integral becomes a
+finite-dimensional Gaussian integral. On the regulated nonzero-mode subspace,
+let $D$ be the matrix representing $\nabla_{\bar z}$, so that the bosonic
+quadratic form is $2\,D^\dagger D$ while the fermion kinetic operators are $D$
+and $D^\dagger$. Then
+\begin{equation}
+  \int d^{2N}y\;e^{-\,y^\dagger(2D^\dagger D)y}
+  =\frac{\pi^{N}}{\det(2D^\dagger D)},
+  \qquad
+  \int d^{N}\chi\,d^{N}\bar\chi\;e^{-\,\bar\chi D\chi}=\det(D),
+  \label{eq:uv-gaussian-det-identity}
+\end{equation}
+and similarly for the right-moving system with $D^\dagger$. Multiplying the
+bosonic and fermionic factors gives
+\begin{equation}
+  \frac{\pi^{N}}{\det(2D^\dagger D)}\;\det(D)\det(D^\dagger)
+  =\left(\frac{\pi}{2}\right)^{N},
+  \label{eq:uv-nzm-cancelled}
+\end{equation}
+using the finite-dimensional identity $\det(D^\dagger D)=\det(D^\dagger)\det(D)$
+(so there is no multiplicative anomaly in this UV definition). Therefore the
+entire dependence on the nonzero-mode spectrum cancels: the leftover factor
+$(\pi/2)^N$ depends only on the field content and on the regulator (through $N$)
+and is independent of the saddle and its moduli. It is thus part of the single
+field-independent normalization $\mathcal{N}_\Lambda$ in \eqref{eq:uv-measure-def}
+and is fixed once and for all by the $k=0$ convention \eqref{eq:uv-k0-result}.
+This is the cancellation stated in \cite[Sec.~19.5.4, after Eq.~(19.200)]{Yin:FoundationsStringTheory}.
+With this understood, the moduli dependence of the instanton sector is entirely
+governed by the zero modes.
+
+\paragraph{If one uses a non-paired regulator.}
+The explicit computation above uses a regulator that truncates bosons and
+fermions in a matched way (for instance by cutting off the singular values of
+$\nabla_{\bar z}$, so that $2\nabla_{\bar z}^\dagger\nabla_{\bar z}$ and
+$\nabla_{\bar z}$ are regulated compatibly). If instead one regulates bosons
+and fermions in an unrelated way, the cancellation of determinants need not be
+manifest at intermediate steps. The key point, however, is that changing the UV
+prescription changes only the UV part of the determinant and hence can be
+compensated by local counterterms and operator renormalizations that define the
+same renormalized worldsheet theory. In our application we are computing a
+string-theory correlator in a $(2,2)$ worldsheet SCFT, so the renormalized
+theory is required to preserve the worldsheet supercharges. Even if an
+intermediate UV regulator breaks supersymmetry, one may impose the supercharge
+Ward identities as renormalization conditions (or equivalently work in $(2,2)$
+superspace) so that the renormalized action takes the supersymmetric form
+\eqref{eq:uv-nlsm-action-complex}. Once this is done, \eqref{eq:uv-nzm-operators}
+holds in the renormalized quadratic action and the only remaining scheme
+dependence is through the local counterterm freedom described below.
+
+Evaluated on a holomorphic degree-$k$ saddle on $\Sigma\simeq\CP^1$, such local
+counterterms can only contribute:
+\begin{itemize}
+\item an Euler-characteristic term (a constant on the sphere), which is part of
+  the overall normalization $\mathcal{N}_\Lambda$ fixed by the $k=0$ matching
+  \eqref{eq:uv-k0-result};
+\item a renormalization of the coefficient of $\int_\Sigma Z^*(J+iB)$ in the
+  action, i.e.\ a shift $t\to t+\delta t_\Lambda$, which is absorbed into the
+  definition $q=e^{2\pi i t}$ in \eqref{eq:uv-q-def}.
+\end{itemize}
+In particular, there is no dependence on the collective coordinates $m$ of the
+map: for fixed $Z_*[\Sigma]=k[C]$, the integral of any closed $2$-form pulled
+back from $X$ depends only on $k$, not on the specific representative in moduli
+space. Thus, once one works with the renormalized modulus $t$ and fixes the
+overall normalization by \eqref{eq:uv-k0-result}, the multiple-cover
+coefficients extracted from the zero-mode measure are independent of the UV
+scheme.
 
 \paragraph{Zero modes and the obstruction insertion.}
 The bosonic collective coordinates are the moduli of degree-$k$ maps
